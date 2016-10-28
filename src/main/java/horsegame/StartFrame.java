@@ -19,7 +19,7 @@ public class StartFrame extends JFrame {
 	public StartFrame(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
-		setSize(1000,650);
+		setSize(Dimen.frameWidthSize,Dimen.frameHeightSize);
 		setVisible(true);
 		
 		
@@ -31,6 +31,9 @@ public class StartFrame extends JFrame {
 		container.setLayout(new FlowLayout());
 		
 		container.add(centerPanel);
+		
+		container.revalidate();
+		container.repaint();
 		
 	}
 	
