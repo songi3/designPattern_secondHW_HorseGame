@@ -9,11 +9,10 @@ public class FastRunning extends RunningStrategy {
 		int x;
 		int y;
 		
-		JLabel horseLabel = horse.getHorseLabel();
-		x= horseLabel.getX();
-		y= horseLabel.getY();
+		x= horse.getX();
+		y= horse.getY();
 		
-		horseLabel.setLocation(x+50, y);
+		horse.setLocation(x+5, y);
 		
 		
 

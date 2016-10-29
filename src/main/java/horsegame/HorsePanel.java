@@ -38,10 +38,16 @@ public class HorsePanel extends JPanel implements Runnable{
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
 		
-		horses[0].setRunningStrategy(new FastRunning());
+		
 
-		Thread th = new Thread(horses[0]);
-		th.start();
+		Thread th[] = new Thread[3];
+		for(int i=0;i<Dimen.horseNumber;i++){
+			horses[i].setRunningStrategy(new FastRunning());
+			th[i]=horses[i];
+			th[i].start();
+		}
+		
+		
 		
 	}
 

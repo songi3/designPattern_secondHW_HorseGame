@@ -23,15 +23,27 @@ public class Horse extends Thread {
 	public JLabel getHorseLabel() {
 		return horseLabel;
 	}
+	
+	public int getX(){
+		return horseLabel.getX();
+	}
+	
+	public int getY(){
+		return horseLabel.getY();
+	}
+	
+	public void setLocation(int x,int y){
+		horseLabel.setLocation(x,y);
+	}
 
 	public void run(){
-		int end = 1;
-		while(end!=5){
+		int end = getX();
+		while(end!=850){
 		
 			try{
 				runningStrategy.run(this);
-				Thread.sleep(1000);
-				end++;
+				Thread.sleep(100);
+				end = getX();
 				
 			}
 			catch(InterruptedException e){}
