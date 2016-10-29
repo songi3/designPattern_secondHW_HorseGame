@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -34,8 +36,9 @@ public class HorsePanel extends JPanel implements Runnable {
 		for (int i = 0; i < Dimen.horseNumber; i++)
 			{
 			horses[i] = new Horse(horseImages[i]);
-			horses[i].setName(i+"마");
-			horses[i].run();
+			
+			horses[i].setName("horse"+i);
+		
 			}
 		
 		
@@ -60,14 +63,15 @@ public class HorsePanel extends JPanel implements Runnable {
 			setVisible(true);
 
 			for (int i = 0; i < Dimen.horseNumber; i++) {
-				imageIcons[i] = new ImageIcon("src/images/horse" + i + ".gif");
+				
+				imageIcons[i] = new ImageIcon("src/images/horse"+i+"_stop.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
-				horseImages[i].setLocation(100, 100 + 100 * i);
-				horseImages[i].setSize(70, 50);
+				horseImages[i].setLocation(0,  20+ 100 * i);
+				horseImages[i].setSize(150, 80);
 
 				lines[i] = new JLabel(line);
 				lines[i].setSize(750, 10);
-				lines[i].setLocation(100, 150 + 100 * i);
+				lines[i].setLocation(100, 100 + 100 * i);
 				add(lines[i]);
 				add(horseImages[i]);
 
@@ -100,11 +104,28 @@ public class HorsePanel extends JPanel implements Runnable {
 			setLayout(new GridLayout(1, 3));
 			ImageIcon push = new ImageIcon("src/images/button.png");
 			pushButton = new JLabel(push);
+			pushButton.addMouseListener(new MouseAdapter() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					//pushButton.setIcon(new ImageIcon(""));
+					for(int i=0;i<Dimen.horseNumber;i++)
+					{
+						horseImages[i].setIcon(new ImageIcon("src/images/horse"+i+".gif"));
+						horses[i].run();
+					}
+				
+					
+				}
+				
+				
+			});
 
 			add(pushButton);
 		}
 	}// South end
 
+	
 	@Override
 	public void run() {
 		while (true) {

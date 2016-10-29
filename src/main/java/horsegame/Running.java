@@ -1,5 +1,7 @@
 package horsegame;
 
+import javax.swing.ImageIcon;
+
 public class Running extends Thread {
 	Horse horse;
 	int interval;
@@ -8,14 +10,17 @@ public class Running extends Thread {
 	}
 	public void run(){
 		
-		while(horse.getX()<850){
+		while(horse.getX()<Dimen.endLine){
 		interval= horse.getRunningStrategy().getInterval();
 		
 		horse.setLocation(horse.getX()+interval, horse.getY());
+		
 		try{
-			Thread.sleep(100);
+			Thread.sleep(150);
 		}
 		catch(InterruptedException e){}
 		}
+		
+		horse.getHorseLabel().setIcon(new ImageIcon("src/images/"+horse.getName()+"_stop.gif"));
 	}
 }

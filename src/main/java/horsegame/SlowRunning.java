@@ -5,7 +5,7 @@ public class SlowRunning extends RunningStrategy {
 	@Override
 	public int getInterval() {
 		
-		return 1;
+		return 3;
 	}
 
 

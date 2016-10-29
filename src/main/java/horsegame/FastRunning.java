@@ -1,15 +1,11 @@
 package horsegame;
 
-import javax.swing.JLabel;
-
-
 public class FastRunning extends RunningStrategy {
 
+	@Override
 	public int getInterval() {
 		
-		return 7;
-		
-
+		return 5;
 	}
 
 }

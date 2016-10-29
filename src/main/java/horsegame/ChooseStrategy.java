@@ -14,8 +14,8 @@ public class ChooseStrategy extends Thread {
 		switch(randomNumber){
 		case 1:
 			
-			horse.setRunningStrategy( new FastRunning());
-			System.out.println(horse.getName()+"Fast");
+			horse.setRunningStrategy( new BestFastRunning());
+			System.out.println(horse.getName()+"BestFast");
 			break;
 		
 		case 2:
@@ -23,16 +23,25 @@ public class ChooseStrategy extends Thread {
 			System.out.println(horse.getName()+"Slow");
 			break;
 	
+		case 3:
+			horse.setRunningStrategy( new BasicRunning());
+			System.out.println(horse.getName()+"Basic");
+			break;
+			
+		case 4:
+			horse.setRunningStrategy( new FastRunning());
+			System.out.println(horse.getName()+"Fast");
+			break;
 		}
 	}
 	
 	public void run(){
 		
-		while(horse.getX()<850){
+		while(horse.getX()<Dimen.endLine){
 		try{
 			
 			choose();
-			sleep(10000);
+			sleep(3000);
 		
 			
 		}
