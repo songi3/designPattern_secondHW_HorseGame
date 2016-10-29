@@ -5,20 +5,37 @@ import javax.swing.JLabel;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Horse extends Thread {
+public class Horse {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
+	ChooseStrategy ch;
 	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
 	public Horse(JLabel horseLabel){
 		this.horseLabel=horseLabel;
+		setRunningStrategy(new BasicRunning());
 	}
 	
+
+	public RunningStrategy getRunningStrategy() {
+		return runningStrategy;
+	}
+
 
 	public void setRunningStrategy(RunningStrategy runningStrategy) {
 		this.runningStrategy = runningStrategy;
 	}
-
 
 	public JLabel getHorseLabel() {
 		return horseLabel;
@@ -36,19 +53,13 @@ public class Horse extends Thread {
 		horseLabel.setLocation(x,y);
 	}
 
+
 	public void run(){
-		int end = getX();
-		while(end!=850){
+		Running running =new Running(this);
+		ChooseStrategy chooseStrategy= new ChooseStrategy(this);
+		chooseStrategy.start();
+		running.start();
 		
-			try{
-				runningStrategy.run(this);
-				Thread.sleep(100);
-				end = getX();
-				
-			}
-			catch(InterruptedException e){}
-			
-		}
 		
 	}
 	

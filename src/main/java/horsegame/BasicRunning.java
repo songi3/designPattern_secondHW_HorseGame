@@ -1,13 +1,11 @@
 package horsegame;
 
-public class SlowRunning extends RunningStrategy {
+public class BasicRunning extends RunningStrategy {
 
 	@Override
 	public int getInterval() {
 		
-		return 1;
+		return 3;
 	}
-
-
 
 }

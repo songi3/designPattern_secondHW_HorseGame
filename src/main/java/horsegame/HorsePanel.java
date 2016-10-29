@@ -18,8 +18,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	NorthPanel northPanel;
 	SouthPanel southPanel;
 	JLabel pushButton;
-	ChooseStrategy chooseStrategy;
-
+	
 	public HorsePanel() {
 		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 		this.setLayout(new BorderLayout());
@@ -31,24 +30,20 @@ public class HorsePanel extends JPanel implements Runnable {
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
 		southPanel = new SouthPanel();
-		chooseStrategy = new ChooseStrategy();
+		
 		for (int i = 0; i < Dimen.horseNumber; i++)
+			{
 			horses[i] = new Horse(horseImages[i]);
+			horses[i].setName(i+"마");
+			horses[i].run();
+			}
+		
+		
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
 
-		Thread th[] = new Thread[3];
-		horses[0].setRunningStrategy(chooseStrategy.choose());
-		horses[1].setRunningStrategy(chooseStrategy.choose());
-		horses[2].setRunningStrategy(chooseStrategy.choose());
-
-		for (int i = 0; i < Dimen.horseNumber; i++) {
-
-			th[i] = horses[i];
-			th[i].start();
-		}
 
 	}
 
