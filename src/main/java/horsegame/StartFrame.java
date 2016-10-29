@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class StartFrame extends JFrame {
 	JPanel centerPanel;
 	Container container;
-	
+	HorsePanel horsePanel;
 	public StartFrame(){
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
@@ -23,8 +23,7 @@ public class StartFrame extends JFrame {
 		setVisible(true);
 		
 		centerPanel = new CenterPanel();
-		//centerPanel.setSize(1000,400);
-		//centerPanel.setLocation(200, 200);
+	
 		
 		container = getContentPane();
 		container.setLayout(null);
@@ -39,7 +38,7 @@ public class StartFrame extends JFrame {
 	//CenterPanel
 	class CenterPanel extends JPanel {
 		public CenterPanel(){
-		setLayout(new FlowLayout()); //배치관리자 삭제 setLayout(null);
+		setLayout(new FlowLayout()); 
 		setBackground(Color.GRAY);
 		setSize(Dimen.frameWidthSize,Dimen.frameHeightSize);
 
@@ -57,12 +56,17 @@ public class StartFrame extends JFrame {
 				if(select.getText().equals("PUSH"))//push 버튼 눌렸을 경우
 				{
 					container.removeAll();
-					container.add(new HorsePanel());
+					container.add(horsePanel = new HorsePanel());
+					
+					Thread th = new Thread(horsePanel);
+					th.start();
+					
 					container.revalidate();
 					container.repaint();
 				}
 			}
 		});
+		
 		add(startMent);
 		add(startButton);
 		
