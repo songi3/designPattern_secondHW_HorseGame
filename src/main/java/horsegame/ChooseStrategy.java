@@ -43,9 +43,8 @@ public class ChooseStrategy extends Thread {
 			choose();
 			sleep(3000);
 		
-			
 		}
-		catch(InterruptedException e){}
+		catch(InterruptedException e){ return ;}
 		
 		}
 	}

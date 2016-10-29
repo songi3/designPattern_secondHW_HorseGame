@@ -9,8 +9,8 @@ public class Horse {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
-	ChooseStrategy ch;
-	
+	Running running;
+	ChooseStrategy chooseStrategy;
 	
 	public void setName(String name) {
 		this.name = name;
@@ -52,11 +52,15 @@ public class Horse {
 	public void setLocation(int x,int y){
 		horseLabel.setLocation(x,y);
 	}
+	public void stop(){
+		this.running.interrupt();
+		this.chooseStrategy.interrupt();
+	}
 
-
+	
 	public void run(){
-		Running running =new Running(this);
-		ChooseStrategy chooseStrategy= new ChooseStrategy(this);
+		running=new Running(this);
+		chooseStrategy= new ChooseStrategy(this);
 		chooseStrategy.start();
 		running.start();
 		

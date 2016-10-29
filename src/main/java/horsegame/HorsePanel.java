@@ -114,10 +114,8 @@ public class HorsePanel extends JPanel implements Runnable {
 						horseImages[i].setIcon(new ImageIcon("src/images/horse"+i+".gif"));
 						horses[i].run();
 					}
-				
-					
+			
 				}
-				
 				
 			});
 
@@ -133,6 +131,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			repaint();
 
 			try {
+				
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
 			}

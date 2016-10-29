@@ -18,9 +18,12 @@ public class Running extends Thread {
 		try{
 			Thread.sleep(150);
 		}
-		catch(InterruptedException e){}
+		catch(InterruptedException e){
+			return ;
+		}
 		}
 		
 		horse.getHorseLabel().setIcon(new ImageIcon("src/images/"+horse.getName()+"_stop.gif"));
+		//new RankingPanel(horse);
 	}
 }
