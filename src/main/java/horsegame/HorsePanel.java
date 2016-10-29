@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class HorsePanel extends JPanel implements Runnable{
+public class HorsePanel extends JPanel implements Runnable {
 	Horse[] horses;
 	ImageIcon[] imageIcons;
 	JLabel[] horseImages;
@@ -18,40 +18,38 @@ public class HorsePanel extends JPanel implements Runnable{
 	NorthPanel northPanel;
 	SouthPanel southPanel;
 	JLabel pushButton;
+	ChooseStrategy chooseStrategy;
 
 	public HorsePanel() {
 		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.DARK_GRAY);
-		
+
 		horses = new Horse[Dimen.horseNumber];
 		imageIcons = new ImageIcon[Dimen.horseNumber];
 		horseImages = new JLabel[Dimen.horseNumber];
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
 		southPanel = new SouthPanel();
-		
-		for(int i=0;i<Dimen.horseNumber;i++)
-			horses[i]=new Horse(horseImages[i]);
+		chooseStrategy = new ChooseStrategy();
+		for (int i = 0; i < Dimen.horseNumber; i++)
+			horses[i] = new Horse(horseImages[i]);
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
-		
-		
+
 		Thread th[] = new Thread[3];
-		horses[0].setRunningStrategy(new FastRunning());
-		horses[1].setRunningStrategy(new SlowRunning());
-		horses[2].setRunningStrategy(new FastRunning());
-		for(int i=0;i<Dimen.horseNumber;i++){
-			
-			
-			th[i]=horses[i];
+		horses[0].setRunningStrategy(chooseStrategy.choose());
+		horses[1].setRunningStrategy(chooseStrategy.choose());
+		horses[2].setRunningStrategy(chooseStrategy.choose());
+
+		for (int i = 0; i < Dimen.horseNumber; i++) {
+
+			th[i] = horses[i];
 			th[i].start();
 		}
-		
-		
-		
+
 	}
 
 	class CenterPanel extends JPanel {
@@ -65,7 +63,7 @@ public class HorsePanel extends JPanel implements Runnable{
 			lines = new JLabel[Dimen.horseNumber];
 
 			setVisible(true);
-			
+
 			for (int i = 0; i < Dimen.horseNumber; i++) {
 				imageIcons[i] = new ImageIcon("src/images/horse" + i + ".gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
@@ -110,20 +108,20 @@ public class HorsePanel extends JPanel implements Runnable{
 
 			add(pushButton);
 		}
-	}//South end
+	}// South end
 
 	@Override
 	public void run() {
-		while(true){
+		while (true) {
 			revalidate();
 			repaint();
 
-			try{
+			try {
 				Thread.sleep(5);
+			} catch (InterruptedException e) {
 			}
-			catch(InterruptedException e){}
 		}
-		
+
 	}
 
 }
