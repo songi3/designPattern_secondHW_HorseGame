@@ -3,7 +3,7 @@ package horsegame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -16,8 +16,8 @@ public class HorsePanel extends JPanel {
 	JLabel [] horseImages;
 	CenterPanel centerPanel;
 	NorthPanel northPanel;
-	
-	
+	SouthPanel southPanel;
+	JLabel pushButton;
 	public HorsePanel() {
 		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 		this.setLayout(new BorderLayout());
@@ -27,10 +27,11 @@ public class HorsePanel extends JPanel {
 		horseImages = new JLabel[Dimen.horseNumber];
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
-		
+		southPanel = new SouthPanel();
 		
 		add(centerPanel,BorderLayout.CENTER);
 		add(northPanel,BorderLayout.NORTH);
+		add(southPanel,BorderLayout.SOUTH);
 		revalidate();
 		repaint();
 
@@ -74,11 +75,23 @@ public class HorsePanel extends JPanel {
 	
 	class NorthPanel extends JPanel{
 		public NorthPanel(){
+			setSize(new Dimension(1000, 50));
 			JLabel ment =new JLabel("dd");
 			add(ment);
 		}
 	}//North end
 	
+	class SouthPanel extends JPanel {
+		public SouthPanel (){
+			setSize(new Dimension(1000, 200));
+	     
+			setLayout(new GridLayout(1,3));
+			ImageIcon push = new ImageIcon("src/images/button.png");
+			pushButton = new JLabel(push);
+			
+			add(pushButton);
+		}
+	}
 	
 
 
