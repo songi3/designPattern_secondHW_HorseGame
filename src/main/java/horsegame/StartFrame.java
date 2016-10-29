@@ -22,13 +22,12 @@ public class StartFrame extends JFrame {
 		setSize(Dimen.frameWidthSize,Dimen.frameHeightSize);
 		setVisible(true);
 		
-		
 		centerPanel = new CenterPanel();
 		//centerPanel.setSize(1000,400);
 		//centerPanel.setLocation(200, 200);
 		
 		container = getContentPane();
-		container.setLayout(new FlowLayout());
+		container.setLayout(null);
 		
 		container.add(centerPanel);
 		
@@ -42,7 +41,8 @@ public class StartFrame extends JFrame {
 		public CenterPanel(){
 		setLayout(new FlowLayout()); //배치관리자 삭제 setLayout(null);
 		setBackground(Color.GRAY);
-		
+		setSize(Dimen.frameWidthSize,Dimen.frameHeightSize);
+
 		JLabel startMent = new JLabel("S.T.A.R.T");
 		JButton startButton = new JButton("PUSH");
 		
