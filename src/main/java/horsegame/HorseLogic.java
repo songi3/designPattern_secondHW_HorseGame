@@ -12,23 +12,23 @@ public class HorseLogic extends Thread {
 
 	public void run() {
 
-		while (flag != true) {
+		while (true) {
 			for (int i = 0; i < Dimen.horseNumber; i++) {
 				if (horses.get(i).getX() >= Dimen.endLine) {
 					System.out.println("Over");
-					flag = true;
+					this.interrupt();
 				}
 			}
 			try {
 				Thread.sleep(150);
 			} catch (InterruptedException e) {
+				for (int i = 0; i < Dimen.horseNumber; i++)
+					horses.get(i).stop();
+				System.out.println("end");
 				return;
 			}
 
 		}
-		for (int i = 0; i < Dimen.horseNumber; i++)
-			horses.get(i).stop();
-		System.out.println("end");
 
 	}
 }
