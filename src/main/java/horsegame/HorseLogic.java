@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class HorseLogic extends Thread {
 	ArrayList<Horse> horses;
+	Horse Winner;
 	boolean flag = false;
 
 	public HorseLogic(ArrayList<Horse> horses) {
@@ -15,7 +16,9 @@ public class HorseLogic extends Thread {
 		while (true) {
 			for (int i = 0; i < Dimen.horseNumber; i++) {
 				if (horses.get(i).getX() >= Dimen.endLine) {
+					Winner = horses.get(i);
 					System.out.println("Over");
+					new WinnerFrame(Winner);
 					this.interrupt();
 				}
 			}
