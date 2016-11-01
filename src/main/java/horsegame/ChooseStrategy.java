@@ -37,7 +37,7 @@ public class ChooseStrategy extends Thread {
 	
 	public void run(){
 		
-		while(horse.getX()<Dimen.endLine){
+		while(!Thread.currentThread().isInterrupted()){
 		try{
 			
 			choose();

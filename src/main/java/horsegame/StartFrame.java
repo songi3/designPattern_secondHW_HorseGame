@@ -61,6 +61,7 @@ public class StartFrame extends JFrame {
 					Thread th = new Thread(horsePanel);
 					th.start();
 					
+					
 					container.revalidate();
 					container.repaint();
 				}

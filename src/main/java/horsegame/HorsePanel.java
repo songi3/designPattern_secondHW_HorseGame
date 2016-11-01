@@ -7,46 +7,47 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HorsePanel extends JPanel implements Runnable {
-	Horse[] horses;
+	// Horse[] horses;
 	ImageIcon[] imageIcons;
 	JLabel[] horseImages;
 	CenterPanel centerPanel;
 	NorthPanel northPanel;
 	SouthPanel southPanel;
 	JLabel pushButton;
-	
+	HorseLogic horseLogic;
+	private static ArrayList<Horse> horses;
+
 	public HorsePanel() {
 		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 		this.setLayout(new BorderLayout());
 		this.setBackground(Color.DARK_GRAY);
 
-		horses = new Horse[Dimen.horseNumber];
+		horses = new ArrayList<Horse>();
 		imageIcons = new ImageIcon[Dimen.horseNumber];
 		horseImages = new JLabel[Dimen.horseNumber];
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
 		southPanel = new SouthPanel();
-		
-		for (int i = 0; i < Dimen.horseNumber; i++)
-			{
-			horses[i] = new Horse(horseImages[i]);
-			
-			horses[i].setName("horse"+i);
-		
-			}
-		
-		
+
+		for (int i = 0; i < Dimen.horseNumber; i++) {
+			horses.add(new Horse(horseImages[i]));
+			horses.get(i).setName("horse" + i);
+			System.out.println(horses.get(i).getName() + "----------");
+		}
+
+		horseLogic = new HorseLogic(horses);
+		horseLogic.start();
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
-
 
 	}
 
@@ -63,10 +64,10 @@ public class HorsePanel extends JPanel implements Runnable {
 			setVisible(true);
 
 			for (int i = 0; i < Dimen.horseNumber; i++) {
-				
-				imageIcons[i] = new ImageIcon("src/images/horse"+i+"_stop.gif");
+
+				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_stop.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
-				horseImages[i].setLocation(0,  20+ 100 * i);
+				horseImages[i].setLocation(0, 20 + 100 * i);
 				horseImages[i].setSize(150, 80);
 
 				lines[i] = new JLabel(line);
@@ -108,22 +109,22 @@ public class HorsePanel extends JPanel implements Runnable {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					//pushButton.setIcon(new ImageIcon(""));
-					for(int i=0;i<Dimen.horseNumber;i++)
-					{
-						horseImages[i].setIcon(new ImageIcon("src/images/horse"+i+".gif"));
-						horses[i].run();
+					// pushButton.setIcon(new ImageIcon(""));
+					for (int i = 0; i < Dimen.horseNumber; i++) {
+						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
+
+						horses.get(i).run();
+
 					}
-			
+
 				}
-				
+
 			});
 
 			add(pushButton);
 		}
 	}// South end
 
-	
 	@Override
 	public void run() {
 		while (true) {
@@ -131,7 +132,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			repaint();
 
 			try {
-				
+
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
 			}

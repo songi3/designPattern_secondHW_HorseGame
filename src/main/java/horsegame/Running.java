@@ -5,25 +5,29 @@ import javax.swing.ImageIcon;
 public class Running extends Thread {
 	Horse horse;
 	int interval;
-	public Running(Horse horse){
-		this.horse=horse;
+
+	public Running(Horse horse) {
+		this.horse = horse;
 	}
-	public void run(){
-		
-		while(horse.getX()<Dimen.endLine){
-		interval= horse.getRunningStrategy().getInterval();
-		
-		horse.setLocation(horse.getX()+interval, horse.getY());
-		
-		try{
-			Thread.sleep(150);
+
+	public void run() {
+
+		while (!Thread.currentThread().isInterrupted()) {
+			interval = horse.getRunningStrategy().getInterval();
+
+			horse.setLocation(horse.getX() + interval, horse.getY());
+
+			try {
+				Thread.sleep(150);
+
+			}
+
+			catch (InterruptedException e) {
+				System.out.println("runnign Thread end---");
+				horse.getHorseLabel().setIcon(new ImageIcon("src/images/" + horse.getName() + "_stop.gif"));
+				return;
+			}
 		}
-		catch(InterruptedException e){
-			return ;
-		}
-		}
-		
-		horse.getHorseLabel().setIcon(new ImageIcon("src/images/"+horse.getName()+"_stop.gif"));
-		//new RankingPanel(horse);
+
 	}
 }
