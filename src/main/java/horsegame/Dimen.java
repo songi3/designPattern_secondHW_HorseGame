@@ -8,7 +8,7 @@ public class Dimen {
 	final static int frameHeightSize = 650;
 	final static int horseNumber = 3;
 	final static int strategyNumber =4;
-	final static int endLine=830;
+	final static int endLine=790;
 	final static Color basicBagroundColor = new Color(160,228,249);
 
 	
