@@ -80,13 +80,8 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		}
 
-		/*
-		 * @Override public void paint(Graphics g) { Dimension d =
-		 * this.getSize();
-		 * 
-		 * g.setColor(Color.BLACK); g.drawLine(0,d.height/2,d.width,d.height/2);
-		 * }
-		 */
+		
+		
 
 	}// Center end
 
