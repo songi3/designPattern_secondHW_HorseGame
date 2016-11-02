@@ -3,8 +3,8 @@ package horsegame;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -20,14 +20,15 @@ public class HorsePanel extends JPanel implements Runnable {
 	CenterPanel centerPanel;
 	NorthPanel northPanel;
 	SouthPanel southPanel;
-	JLabel pushButton;
+	JLabel startButton;
 	HorseLogic horseLogic;
 	private static ArrayList<Horse> horses;
 
 	public HorsePanel() {
 		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 		this.setLayout(new BorderLayout());
-		this.setBackground(Color.DARK_GRAY);
+		setBackground(Color.white);
+
 
 		horses = new ArrayList<Horse>();
 		imageIcons = new ImageIcon[Dimen.horseNumber];
@@ -56,7 +57,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		public CenterPanel() {
 			setLayout(null); // 배치관리자 삭제 setLayout(null);
-			setBackground(Color.WHITE);
+			setBackground(null);
 
 			ImageIcon line = new ImageIcon("src/images/line.png");
 			lines = new JLabel[Dimen.horseNumber];
@@ -79,19 +80,31 @@ public class HorsePanel extends JPanel implements Runnable {
 			}
 
 		}
+		
+		public void paintComponent(Graphics g){
+			super.paintComponent(g);
+			ImageIcon icon=new ImageIcon("src/images/frame.png");
+			Image img=icon.getImage();		
+			g.drawImage(img, 0,0,this);
+		}
+		
+		
 
 	}// Center end
 
 	class NorthPanel extends JPanel {
+		
+		
 		public NorthPanel() {
 			setSize(new Dimension(1000, 50));
-			JLabel ment = new JLabel("dd");
-			add(ment);
+			
 			setBackground(Dimen.basicBagroundColor);
-			setLayout(new GridLayout(1, 3));
-			ImageIcon push = new ImageIcon("src/images/button.gif");
-			pushButton = new JLabel(push);
-			pushButton.addMouseListener(new MouseAdapter() {
+			setLayout(new BorderLayout());
+			
+			
+			ImageIcon push = new ImageIcon("src/images/start_button.png");
+			startButton = new JLabel(push);
+			startButton.addMouseListener(new MouseAdapter() {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
@@ -104,16 +117,17 @@ public class HorsePanel extends JPanel implements Runnable {
 				}
 			});
 
-			add(pushButton);
+			add(startButton,BorderLayout.EAST);
 		}
 	}// North end
 
 	class SouthPanel extends JPanel {
 		public SouthPanel() {
-		//	setSize(new Dimension(1000, 150));
+			// setSize(new Dimension(1000, 150));
 			setLayout(new BorderLayout());
+			setBackground(null);
 			JLabel LabelBg = new JLabel(new ImageIcon("src/images/horsepanel_south_bg.png"));
-			add(LabelBg,BorderLayout.CENTER);
+			add(LabelBg, BorderLayout.CENTER);
 		}
 	}// South end
 

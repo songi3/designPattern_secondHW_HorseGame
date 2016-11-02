@@ -48,7 +48,7 @@ public class StartFrame extends JFrame {
 
 		public void paint(Graphics g) {
 
-			g.drawImage(bg.getImage(), 0, 0, null); // 그림을 그리는 메소드
+			g.drawImage(bg.getImage(), 0, 0, null);
 			setOpaque(false);
 		}
 
