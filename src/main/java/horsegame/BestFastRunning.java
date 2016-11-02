@@ -7,7 +7,7 @@ public class BestFastRunning extends RunningStrategy {
 
 	public int getInterval() {
 		
-		return 10;
+		return 20;
 		
 
 	}

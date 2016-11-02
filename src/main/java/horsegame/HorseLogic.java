@@ -1,14 +1,17 @@
 package horsegame;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 
 public class HorseLogic extends Thread {
 	ArrayList<Horse> horses;
+	HorsePanel horsePanel;
 	Horse Winner;
 	boolean flag = false;
 
-	public HorseLogic(ArrayList<Horse> horses) {
+	public HorseLogic(ArrayList<Horse> horses,HorsePanel horsePanel) {
 		this.horses = horses;
+		this.horsePanel = horsePanel;
 	}
 
 	public void run() {
@@ -18,7 +21,8 @@ public class HorseLogic extends Thread {
 				if (horses.get(i).getX() >= Dimen.endLine) {
 					Winner = horses.get(i);
 					System.out.println("Over");
-					new WinnerFrame(Winner);
+					horsePanel.centerPanel.remove();
+					horsePanel.centerPanel.setPanel(new WinnerPanel(Winner));
 					this.interrupt();
 				}
 			}

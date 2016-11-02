@@ -43,7 +43,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			System.out.println(horses.get(i).getName() + "----------");
 		}
 
-		horseLogic = new HorseLogic(horses);
+		horseLogic = new HorseLogic(horses,this);
 		horseLogic.start();
 
 		add(centerPanel, BorderLayout.CENTER);
@@ -56,7 +56,7 @@ public class HorsePanel extends JPanel implements Runnable {
 		JLabel[] lines;
 
 		public CenterPanel() {
-			setLayout(null); // 배치관리자 삭제 setLayout(null);
+			setLayout(null); 
 			setBackground(null);
 
 			ImageIcon line = new ImageIcon("src/images/line.png");
@@ -81,6 +81,12 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		}
 		
+		public void remove(){
+			this.removeAll();
+		}
+		public void setPanel(JPanel panel){
+			add(panel);
+		}
 		public void paintComponent(Graphics g){
 			super.paintComponent(g);
 			ImageIcon icon=new ImageIcon("src/images/frame.png");
