@@ -57,7 +57,7 @@ public class StartFrame extends JFrame {
 			setBackground(Color.GRAY);
 			setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
 
-			startButton = new JButton(new ImageIcon("src/images/start_button.gif"));
+			startButton = new JButton(new ImageIcon("src/images/push_button.png"));
 			startButton.setSize(200, 200);
 			startButton.setLocation(750, 150);
 

@@ -80,9 +80,6 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		}
 
-		
-		
-
 	}// Center end
 
 	class NorthPanel extends JPanel {
@@ -90,15 +87,9 @@ public class HorsePanel extends JPanel implements Runnable {
 			setSize(new Dimension(1000, 50));
 			JLabel ment = new JLabel("dd");
 			add(ment);
-		}
-	}// North end
-
-	class SouthPanel extends JPanel {
-		public SouthPanel() {
-			setSize(new Dimension(1000, 200));
-
+			setBackground(Dimen.basicBagroundColor);
 			setLayout(new GridLayout(1, 3));
-			ImageIcon push = new ImageIcon("src/images/button.png");
+			ImageIcon push = new ImageIcon("src/images/button.gif");
 			pushButton = new JLabel(push);
 			pushButton.addMouseListener(new MouseAdapter() {
 
@@ -107,16 +98,22 @@ public class HorsePanel extends JPanel implements Runnable {
 					// pushButton.setIcon(new ImageIcon(""));
 					for (int i = 0; i < Dimen.horseNumber; i++) {
 						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
-
 						horses.get(i).run();
 
 					}
-
 				}
-
 			});
 
 			add(pushButton);
+		}
+	}// North end
+
+	class SouthPanel extends JPanel {
+		public SouthPanel() {
+		//	setSize(new Dimension(1000, 150));
+			setLayout(new BorderLayout());
+			JLabel LabelBg = new JLabel(new ImageIcon("src/images/horsepanel_south_bg.png"));
+			add(LabelBg,BorderLayout.CENTER);
 		}
 	}// South end
 
