@@ -3,9 +3,9 @@ package horsegame;
 import javax.swing.JLabel;
 
 
-public class BestFastRunning extends RunningStrategy {
+public class VeryFastRunning extends RunningStrategy {
 
-	public BestFastRunning(Horse horse) {
+	public VeryFastRunning(Horse horse) {
 		super(horse);
 	}
 
