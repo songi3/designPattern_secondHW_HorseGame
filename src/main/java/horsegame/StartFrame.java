@@ -25,7 +25,7 @@ public class StartFrame extends JFrame {
 	public StartFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
-		setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
+		setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
 		setVisible(true);
 
 		centerPanel = new CenterPanel();
@@ -55,7 +55,7 @@ public class StartFrame extends JFrame {
 		public CenterPanel() {
 			setLayout(null);
 			setBackground(Color.GRAY);
-			setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
+			setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
 
 			startButton = new JButton(new ImageIcon("src/images/push_button.png"));
 			startButton.setSize(200, 200);

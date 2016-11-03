@@ -3,17 +3,17 @@ package horsegame;
 public class ChooseStrategy extends Thread {
 	
 	Horse horse;
-	
+	final static int strategyNumber =4;
+
 	public ChooseStrategy(Horse horse) {
 		super();
 		this.horse = horse;
 	}
 
 	public void choose(){
-		int randomNumber = (int)(Math.random()*Dimen.strategyNumber)+1;
+		int randomNumber = (int)(Math.random()*strategyNumber)+1;
 		switch(randomNumber){
 		case 1:
-			
 			horse.setRunningStrategy( new BestFastRunning(horse));
 			System.out.println(horse.getName()+"BestFast");
 			break;

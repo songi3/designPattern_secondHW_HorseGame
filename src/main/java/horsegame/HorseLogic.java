@@ -8,19 +8,19 @@ public class HorseLogic extends Thread {
 	HorsePanel horsePanel;
 	Horse Winner;
 	boolean flag = false;
+	final int endLine=790;
 
-	public HorseLogic(ArrayList<Horse> horses,HorsePanel horsePanel) {
+	public HorseLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
 		this.horses = horses;
 		this.horsePanel = horsePanel;
 	}
 
 	public void run() {
-
 		while (true) {
-			for (int i = 0; i < Dimen.horseNumber; i++) {
-				if (horses.get(i).getX() >= Dimen.endLine) {
+			for (int i = 0; i <horsePanel.getHorseNumber(); i++) {
+				if (horses.get(i).getX() >= endLine) {
 					Winner = horses.get(i);
-					System.out.println("Over");
+					System.out.println("GameOver");
 					horsePanel.centerPanel.remove();
 					horsePanel.centerPanel.setPanel(new WinnerPanel(Winner));
 					this.interrupt();
@@ -29,7 +29,7 @@ public class HorseLogic extends Thread {
 			try {
 				Thread.sleep(150);
 			} catch (InterruptedException e) {
-				for (int i = 0; i < Dimen.horseNumber; i++)
+				for (int i = 0; i < horsePanel.getHorseNumber(); i++)
 					horses.get(i).stop();
 				System.out.println("end");
 				return;

@@ -22,28 +22,32 @@ public class HorsePanel extends JPanel implements Runnable {
 	SouthPanel southPanel;
 	JLabel startButton;
 	HorseLogic horseLogic;
+
+	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
+	private final static int frameWidthSize = 1000;
+	private final static int frameHeightSize = 650;
+	final Color basicBagroundColor = new Color(160,228,249);
 
 	public HorsePanel() {
-		this.setSize(Dimen.frameWidthSize, Dimen.frameHeightSize);
+		this.setSize(frameWidthSize,frameHeightSize);
 		this.setLayout(new BorderLayout());
 		setBackground(Color.white);
 
-
 		horses = new ArrayList<Horse>();
-		imageIcons = new ImageIcon[Dimen.horseNumber];
-		horseImages = new JLabel[Dimen.horseNumber];
+		imageIcons = new ImageIcon[horseNumber];
+		horseImages = new JLabel[horseNumber];
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
 		southPanel = new SouthPanel();
 
-		for (int i = 0; i < Dimen.horseNumber; i++) {
+		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
 			System.out.println(horses.get(i).getName() + "----------");
 		}
 
-		horseLogic = new HorseLogic(horses,this);
+		horseLogic = new HorseLogic(horses, this);
 		horseLogic.start();
 
 		add(centerPanel, BorderLayout.CENTER);
@@ -56,15 +60,14 @@ public class HorsePanel extends JPanel implements Runnable {
 		JLabel[] lines;
 
 		public CenterPanel() {
-			setLayout(null); 
+			setLayout(null);
 			setBackground(null);
-
-			ImageIcon line = new ImageIcon("src/images/line.png");
-			lines = new JLabel[Dimen.horseNumber];
-
 			setVisible(true);
+			
+			ImageIcon line = new ImageIcon("src/images/line.png");
+			lines = new JLabel[horseNumber];
 
-			for (int i = 0; i < Dimen.horseNumber; i++) {
+			for (int i = 0; i < horseNumber; i++) {
 
 				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_stop.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
@@ -74,62 +77,56 @@ public class HorsePanel extends JPanel implements Runnable {
 				lines[i] = new JLabel(line);
 				lines[i].setSize(750, 10);
 				lines[i].setLocation(100, 130 + 100 * i);
+			
 				add(lines[i]);
 				add(horseImages[i]);
-
 			}
-
 		}
-		
-		public void remove(){
+
+		public void remove() {
 			this.removeAll();
 		}
-		public void setPanel(JPanel panel){
+
+		public void setPanel(JPanel panel) {
 			add(panel);
 		}
-		public void paintComponent(Graphics g){
+
+		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			ImageIcon icon=new ImageIcon("src/images/frame.png");
-			Image img=icon.getImage();		
-			g.drawImage(img, 0,0,this);
+			ImageIcon icon = new ImageIcon("src/images/frame.png");
+			Image img = icon.getImage();
+			g.drawImage(img, 0, 0, this);
 		}
-		
-		
 
 	}// Center end
 
 	class NorthPanel extends JPanel {
-		
-		
+
 		public NorthPanel() {
 			setSize(new Dimension(1000, 50));
-			
-			setBackground(Dimen.basicBagroundColor);
+
+			setBackground(basicBagroundColor);
 			setLayout(new BorderLayout());
-			
-			
+
 			ImageIcon push = new ImageIcon("src/images/start_button.png");
 			startButton = new JLabel(push);
 			startButton.addMouseListener(new MouseAdapter() {
 
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					// pushButton.setIcon(new ImageIcon(""));
-					for (int i = 0; i < Dimen.horseNumber; i++) {
+					for (int i = 0; i < horseNumber; i++) {
 						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
 						horses.get(i).run();
-
 					}
 				}
 			});
 
-			add(startButton,BorderLayout.EAST);
+			add(startButton, BorderLayout.EAST);
 		}
 	}// North end
 
 	class SouthPanel extends JPanel {
 		public SouthPanel() {
-			// setSize(new Dimension(1000, 150));
 			setLayout(new BorderLayout());
 			setBackground(null);
 			JLabel LabelBg = new JLabel(new ImageIcon("src/images/horsepanel_south_bg.png"));
@@ -137,12 +134,24 @@ public class HorsePanel extends JPanel implements Runnable {
 		}
 	}// South end
 
+	public static int getHorseNumber() {
+		return horseNumber;
+	}
+
+	public static int getFramewidthsize() {
+		return frameWidthSize;
+	}
+
+	public static int getFrameheightsize() {
+		return frameHeightSize;
+	}
+
+
 	@Override
 	public void run() {
 		while (true) {
 			revalidate();
 			repaint();
-
 			try {
 
 				Thread.sleep(5);

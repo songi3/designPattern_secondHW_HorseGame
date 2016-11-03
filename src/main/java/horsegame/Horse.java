@@ -9,8 +9,8 @@ public class Horse {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
-	Running running;
-	ChooseStrategy chooseStrategy;
+	private Running running;
+	private ChooseStrategy chooseStrategy;
 
 	public void setName(String name) {
 		this.name = name;
