@@ -7,8 +7,7 @@ public class HorseLogic extends Thread {
 	ArrayList<Horse> horses;
 	HorsePanel horsePanel;
 	Horse Winner;
-	boolean flag = false;
-	final int endLine=790;
+	final int endLine = 790;
 
 	public HorseLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
 		this.horses = horses;
@@ -17,7 +16,7 @@ public class HorseLogic extends Thread {
 
 	public void run() {
 		while (true) {
-			for (int i = 0; i <horsePanel.getHorseNumber(); i++) {
+			for (int i = 0; i < horsePanel.getHorseNumber(); i++) {
 				if (horses.get(i).getX() >= endLine) {
 					Winner = horses.get(i);
 					System.out.println("GameOver");

@@ -3,11 +3,15 @@ package horsegame;
 public class ChooseStrategy extends Thread {
 	
 	Horse horse;
-	final static int strategyNumber =4;
+	private int strategyNumber =4;
 
 	public ChooseStrategy(Horse horse) {
 		super();
 		this.horse = horse;
+	}
+
+	public void setStrategyNumber(int strategyNumber) {
+		this.strategyNumber = strategyNumber;
 	}
 
 	public void choose(){
@@ -38,12 +42,12 @@ public class ChooseStrategy extends Thread {
 	public void run(){
 		
 		while(!Thread.currentThread().isInterrupted()){
-		try{
+			try{
 			
 			choose();
 			sleep(3000);
 		
-		}
+			}
 		catch(InterruptedException e){ return ;}
 		
 		}

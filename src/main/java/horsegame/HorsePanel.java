@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class HorsePanel extends JPanel implements Runnable {
-	// Horse[] horses;
+	
 	ImageIcon[] imageIcons;
 	JLabel[] horseImages;
 	CenterPanel centerPanel;
@@ -145,7 +145,6 @@ public class HorsePanel extends JPanel implements Runnable {
 	public static int getFrameheightsize() {
 		return frameHeightSize;
 	}
-
 
 	@Override
 	public void run() {

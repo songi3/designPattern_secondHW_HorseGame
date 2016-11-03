@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 
 public class Running extends Thread {
 	Horse horse;
-	
+
 	public Running(Horse horse) {
 		this.horse = horse;
 	}
