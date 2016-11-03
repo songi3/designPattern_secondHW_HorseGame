@@ -26,6 +26,7 @@ public class StartFrame extends JFrame {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
 		setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
+		setResizable(false);
 		setVisible(true);
 
 		centerPanel = new CenterPanel();

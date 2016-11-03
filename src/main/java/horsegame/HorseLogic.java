@@ -7,7 +7,7 @@ public class HorseLogic extends Thread {
 	ArrayList<Horse> horses;
 	HorsePanel horsePanel;
 	Horse Winner;
-	final int endLine = 790;
+	final int endLine = 795;
 
 	public HorseLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
 		this.horses = horses;
