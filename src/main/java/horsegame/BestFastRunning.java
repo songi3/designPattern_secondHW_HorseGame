@@ -5,11 +5,13 @@ import javax.swing.JLabel;
 
 public class BestFastRunning extends RunningStrategy {
 
-	public int getInterval() {
-		
-		return 20;
-		
-
+	public BestFastRunning(Horse horse) {
+		super(horse);
 	}
+
+	public void init(){
+		this.interval = 20;
+	}
+	
 
 }

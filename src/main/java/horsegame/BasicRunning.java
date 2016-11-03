@@ -2,10 +2,13 @@ package horsegame;
 
 public class BasicRunning extends RunningStrategy {
 
-	@Override
-	public int getInterval() {
-		
-		return 4;
+	public BasicRunning(Horse horse) {
+		super(horse);
 	}
+
+	public void init(){
+		this.interval = 4;
+	}
+
 
 }

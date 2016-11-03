@@ -4,8 +4,7 @@ import javax.swing.ImageIcon;
 
 public class Running extends Thread {
 	Horse horse;
-	int interval;
-
+	
 	public Running(Horse horse) {
 		this.horse = horse;
 	}
@@ -13,13 +12,11 @@ public class Running extends Thread {
 	public void run() {
 
 		while (!Thread.currentThread().isInterrupted()) {
-			interval = horse.getRunningStrategy().getInterval();
 
-			horse.setLocation(horse.getX() + interval, horse.getY());
+			horse.getRunningStrategy().run();
 
 			try {
 				Thread.sleep(150);
-
 			}
 
 			catch (InterruptedException e) {

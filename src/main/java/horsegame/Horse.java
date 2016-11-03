@@ -22,7 +22,7 @@ public class Horse {
 
 	public Horse(JLabel horseLabel) {
 		this.horseLabel = horseLabel;
-		setRunningStrategy(new BasicRunning());
+		setRunningStrategy(new BasicRunning(this));
 	}
 
 	public RunningStrategy getRunningStrategy() {
