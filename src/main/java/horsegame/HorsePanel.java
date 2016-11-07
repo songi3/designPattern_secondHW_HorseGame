@@ -21,7 +21,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	NorthPanel northPanel;
 	SouthPanel southPanel;
 	JLabel startButton;
-	HorseLogic horseLogic;
+	StopLogic horseLogic;
 
 	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
@@ -44,10 +44,9 @@ public class HorsePanel extends JPanel implements Runnable {
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
-			System.out.println(horses.get(i).getName() + "----------");
 		}
 
-		horseLogic = new HorseLogic(horses, this);
+		horseLogic = new StopLogic(horses, this);
 		horseLogic.start();
 
 		add(centerPanel, BorderLayout.CENTER);

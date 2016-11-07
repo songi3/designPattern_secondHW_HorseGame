@@ -7,7 +7,7 @@ public class SlowRunning extends RunningStrategy {
 	}
 
 	public void init(){
-		this.interval = 3;
+		this.interval = 5;
 	}
 
 

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 
 import javax.swing.JPanel;
 
-public class HorseLogic extends Thread {
+public class StopLogic extends Thread {
 	ArrayList<Horse> horses;
 	HorsePanel horsePanel;
 	Horse Winner;
 	WinnerPanel winnerPaenl;
 	final int endLine = 795;
 
-	public HorseLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
+	public StopLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
 		this.horses = horses;
 		this.horsePanel = horsePanel;
 	}
@@ -22,7 +22,6 @@ public class HorseLogic extends Thread {
 				if (horses.get(i).getX() >= endLine) {
 					Winner = horses.get(i);
 					winnerPaenl = new WinnerPanel(Winner);
-					System.out.println("GameOver");
 					horsePanel.centerPanel.remove();
 					horsePanel.centerPanel.setPanel(winnerPaenl);
 					this.interrupt();
@@ -33,7 +32,6 @@ public class HorseLogic extends Thread {
 			} catch (InterruptedException e) {
 				for (int i = 0; i < horsePanel.getHorseNumber(); i++)
 					horses.get(i).stop();
-				System.out.println("end");
 				return;
 			}
 

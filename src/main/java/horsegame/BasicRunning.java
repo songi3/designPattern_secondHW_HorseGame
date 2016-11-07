@@ -6,9 +6,8 @@ public class BasicRunning extends RunningStrategy {
 		super(horse);
 	}
 
-	public void init(){
-		this.interval = 4;
+	public void init() {
+		this.interval = 7;
 	}
-
 
 }

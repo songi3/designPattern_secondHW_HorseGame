@@ -7,7 +7,7 @@ public class FastRunning extends RunningStrategy {
 	}
 
 	public void init(){
-		this.interval = 10;
+		this.interval = 9;
 	}
-
+	
 }

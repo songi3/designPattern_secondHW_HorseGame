@@ -20,7 +20,6 @@ public class Running extends Thread {
 			}
 
 			catch (InterruptedException e) {
-				System.out.println("runnign Thread end---");
 				horse.getHorseLabel().setIcon(new ImageIcon("src/images/" + horse.getName() + "_stop.gif"));
 				return;
 			}

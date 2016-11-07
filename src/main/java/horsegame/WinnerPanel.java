@@ -14,6 +14,7 @@ public class WinnerPanel extends JPanel {
 	JLabel horseName;
 	JLabel horseLabel;
 	JLabel ment;
+	
 	public WinnerPanel(Horse horse) {
 		setLayout(null); 
 		setBackground(Color.WHITE);
