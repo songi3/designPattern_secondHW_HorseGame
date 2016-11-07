@@ -1,6 +1,7 @@
 package horsegame;
 
 import java.awt.BorderLayout;
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -44,6 +45,7 @@ public class HorsePanel extends JPanel implements Runnable {
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
+			System.out.println(horses.get(i).getName() + " : ready "+  "----------------");
 		}
 
 		horseLogic = new StopLogic(horses, this);
@@ -114,7 +116,7 @@ public class HorsePanel extends JPanel implements Runnable {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 					for (int i = 0; i < horseNumber; i++) {
-						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
+						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));		
 						horses.get(i).run();
 					}
 				}
@@ -122,6 +124,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 			add(startButton, BorderLayout.EAST);
 		}
+		
 	}// North end
 
 	class SouthPanel extends JPanel {
@@ -144,7 +147,6 @@ public class HorsePanel extends JPanel implements Runnable {
 	public static int getFrameheightsize() {
 		return frameHeightSize;
 	}
-
 
 	@Override
 	public void run() {

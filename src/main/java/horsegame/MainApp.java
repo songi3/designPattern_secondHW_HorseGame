@@ -1,10 +1,14 @@
 package horsegame;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class MainApp {
 
 	public static void main(String[] args) {
-		StartFrame startFrame = new StartFrame();
-
+		ApplicationContext context = new ClassPathXmlApplicationContext("horsegame/beans/beans.xml");
+		
+		//StartFrame startFrame = new StartFrame();
 	}
 
 }

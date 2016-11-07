@@ -30,8 +30,11 @@ public class StopLogic extends Thread {
 			try {
 				Thread.sleep(150);
 			} catch (InterruptedException e) {
-				for (int i = 0; i < horsePanel.getHorseNumber(); i++)
+				for (int i = 0; i < horsePanel.getHorseNumber(); i++) {
+					System.out.println(horses.get(i).getName() + " : stop " + "----------------");
 					horses.get(i).stop();
+				}
+
 				return;
 			}
 

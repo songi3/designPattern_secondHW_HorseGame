@@ -1,9 +1,11 @@
 package horsegame;
 
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -14,7 +16,7 @@ public class WinnerPanel extends JPanel {
 	JLabel horseName;
 	JLabel horseLabel;
 	JLabel ment;
-	
+
 	public WinnerPanel(Horse horse) {
 		setLayout(null); 
 		setBackground(Color.WHITE);
@@ -41,7 +43,6 @@ public class WinnerPanel extends JPanel {
 		horseLabel.setLocation(310, 50);
 		horseLabel.setSize(200, 200);
 		
-	
 		add(ment);
 		add(horseName);
 		add(horseLabel);
