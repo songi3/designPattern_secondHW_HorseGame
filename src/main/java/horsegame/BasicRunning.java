@@ -1,13 +1,8 @@
 package horsegame;
 
-public class BasicRunning extends RunningStrategy {
+public class BasicRunning implements RunningStrategy {
 
-	public BasicRunning(Horse horse) {
-		super(horse);
+	public void run(Horse horse) {
+		horse.setLocation(horse.getX() + 7, horse.getY());
 	}
-
-	public void init() {
-		this.interval = 7;
-	}
-
 }

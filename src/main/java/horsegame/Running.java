@@ -13,7 +13,7 @@ public class Running extends Thread {
 
 		while (!Thread.currentThread().isInterrupted()) {
 
-			horse.getRunningStrategy().run();
+			horse.getRunningStrategy().run(horse);
 
 			try {
 				Thread.sleep(150);

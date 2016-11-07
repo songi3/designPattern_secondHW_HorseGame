@@ -14,22 +14,22 @@ public class ChooseStrategy extends Thread {
 		int randomNumber = (int) (Math.random() * strategyNumber) + 1;
 		switch (randomNumber) {
 		case 1:
-			horse.setRunningStrategy(new VeryFastRunning(horse));
+			horse.setRunningStrategy(new VeryFastRunning());
 			System.out.println(horse.getName() + " : verFast");
 			break;
 
 		case 2:
-			horse.setRunningStrategy(new SlowRunning(horse));
+			horse.setRunningStrategy(new SlowRunning());
 			System.out.println(horse.getName() + " : slow");
 			break;
 
 		case 3:
-			horse.setRunningStrategy(new BasicRunning(horse));
+			horse.setRunningStrategy(new BasicRunning());
 			System.out.println(horse.getName() + " : basic");
 			break;
 
 		case 4:
-			horse.setRunningStrategy(new FastRunning(horse));
+			horse.setRunningStrategy(new FastRunning());
 			System.out.println(horse.getName() + " : fast");
 			break;
 		}

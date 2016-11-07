@@ -2,14 +2,9 @@ package horsegame;
 
 import javax.swing.JLabel;
 
-public class VeryFastRunning extends RunningStrategy {
+public class VeryFastRunning implements RunningStrategy {
 
-	public VeryFastRunning(Horse horse) {
-		super(horse);
+	public void run(Horse horse) {
+		horse.setLocation(horse.getX() + 11, horse.getY());
 	}
-
-	public void init() {
-		this.interval = 11;
-	}
-
 }
