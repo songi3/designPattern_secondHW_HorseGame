@@ -11,9 +11,9 @@ public class StopLogic extends Thread {
 	WinnerPanel winnerPaenl;
 	final int endLine = 795;
 
-	public StopLogic(ArrayList<Horse> horses, HorsePanel horsePanel) {
-		this.horses = horses;
+	public StopLogic(HorsePanel horsePanel) {
 		this.horsePanel = horsePanel;
+		horses = horsePanel.getHorses();
 	}
 
 	public void run() {

@@ -48,7 +48,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			System.out.println(horses.get(i).getName() + " : ready "+  "----------------");
 		}
 
-		horseLogic = new StopLogic(horses, this);
+		horseLogic = new StopLogic(this);
 		horseLogic.start();
 
 		add(centerPanel, BorderLayout.CENTER);
@@ -146,6 +146,10 @@ public class HorsePanel extends JPanel implements Runnable {
 
 	public static int getFrameheightsize() {
 		return frameHeightSize;
+	}
+	
+	public static ArrayList<Horse> getHorses(){
+		return horses;
 	}
 
 	@Override
