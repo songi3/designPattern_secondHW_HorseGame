@@ -27,7 +27,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
-	private final static int frameHeightSize = 610;
+	private final static int frameHeightSize = 650;
 	final Color basicBagroundColor = new Color(160,228,249);
 
 	public HorsePanel() {
@@ -78,8 +78,8 @@ public class HorsePanel extends JPanel implements Runnable {
 
 				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_stop.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
-				horseImages[i].setLocation(35, 50 + 100 * i);
-				horseImages[i].setSize(300, 200);
+				horseImages[i].setLocation(0,150 * i+5);
+				horseImages[i].setSize(280, 200);
 
 				//lines[i] = new JLabel(line);
 				//lines[i].setSize(750, 10);
