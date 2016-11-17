@@ -39,7 +39,7 @@ public class WinnerPanel extends JPanel {
 		ment.setForeground(Color.BLACK);
 		
 		horseLabel = horse.getHorseLabel();
-		horseLabel.setIcon( new ImageIcon("src/images/"+horseName+"_win.gif"));
+		horseLabel.setIcon( new ImageIcon("src/images/"+horseName+".gif"));
 		horseLabel.setLocation(310, 50);
 		horseLabel.setSize(200, 200);
 		
