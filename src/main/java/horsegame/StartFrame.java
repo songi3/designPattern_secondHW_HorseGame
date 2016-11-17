@@ -43,7 +43,7 @@ public class StartFrame extends JFrame {
 
 	class CenterPanel extends JPanel {
 
-		ImageIcon bg = new ImageIcon("src/images/startBaground_carrot.png");
+		ImageIcon bg = new ImageIcon("src/images/horse_main.png");
 		JButton startButton;
 
 		public void paint(Graphics g) {
@@ -62,9 +62,9 @@ public class StartFrame extends JFrame {
 			startButton.setLocation(800, 150);
 			startButton.setBorderPainted(false);
 			startButton.setFocusPainted(false);
-			//startButton.setContentAreaFilled(false);
-			//startButton.setOpaque(false);
-			
+			// startButton.setContentAreaFilled(false);
+			// startButton.setOpaque(false);
+
 			repaint();
 			startButton.addMouseListener(new MouseAdapter() {
 				@Override

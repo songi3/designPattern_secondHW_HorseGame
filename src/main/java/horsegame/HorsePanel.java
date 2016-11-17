@@ -27,8 +27,8 @@ public class HorsePanel extends JPanel implements Runnable {
 
 	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
-	private final static int frameWidthSize = 1000;
-	private final static int frameHeightSize = 650;
+	private final static int frameWidthSize = 1100;
+	private final static int frameHeightSize = 600;
 	final Color basicBagroundColor = new Color(160,228,249);
 
 	public HorsePanel() {
