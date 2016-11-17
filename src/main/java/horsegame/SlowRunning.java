@@ -1,12 +1,21 @@
 package horsegame;
 
-public class SlowRunning implements RunningStrategy {
+public class SlowRunning extends RunningStrategy {
+	
+	public SlowRunning(Horse horse) {
+		super(horse);
+	}
 
-	public void run(Horse horse) {
+	public void run() {
 		horse.setLocation(horse.getX() + 6, horse.getY());
 	}
 
 	public String getName() {
 		return "SlowRunning";
 	}
+
+	public void downEnergy() {
+		horse.setEnergy(horse.getEnergy()-3);
+	}
+	
 }

@@ -49,6 +49,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
 			horses.get(i).addObserver(new StrategyObserver(horses.get(i)));
+			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
 			System.out.println(horses.get(i).getName() + " : ready "+  "----------------");
 		}
 

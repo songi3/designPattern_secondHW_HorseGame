@@ -13,6 +13,15 @@ public class Horse extends Subject {
 	private JLabel horseLabel;
 	private Running running;
 	private ChooseStrategy chooseStrategy;
+	
+	private int Energy = 100;
+	public int getEnergy() {
+		return Energy;
+	}
+
+	public void setEnergy(int energy) {
+		Energy = energy;
+	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -22,9 +31,10 @@ public class Horse extends Subject {
 		return name;
 	}
 
+
 	public Horse(JLabel horseLabel) {
 		this.horseLabel = horseLabel;
-		setRunningStrategy(new BasicRunning());
+		setRunningStrategy(new BasicRunning(this));
 	}
 
 	public RunningStrategy getRunningStrategy() {
