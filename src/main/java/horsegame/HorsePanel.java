@@ -79,7 +79,7 @@ public class HorsePanel extends JPanel implements Runnable {
 				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_stop.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
 				horseImages[i].setLocation(35, 50 + 100 * i);
-				horseImages[i].setSize(150, 80);
+				horseImages[i].setSize(300, 200);
 
 				//lines[i] = new JLabel(line);
 				//lines[i].setSize(750, 10);
