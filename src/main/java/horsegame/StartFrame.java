@@ -21,7 +21,7 @@ public class StartFrame extends JFrame {
 	JPanel centerPanel;
 	Container container;
 	HorsePanel horsePanel;
-
+	JLabel horseGame;
 	public StartFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
@@ -57,6 +57,9 @@ public class StartFrame extends JFrame {
 			setBackground(Color.GRAY);
 			setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
 
+			horseGame = new JLabel("HORSE GAME");
+			horseGame.setLocation(120, 200);
+			horseGame.setSize(200, 100);
 			startButton = new JButton(new ImageIcon("src/images/push_button.png"));
 			startButton.setSize(150, 150);
 			startButton.setLocation(800, 150);

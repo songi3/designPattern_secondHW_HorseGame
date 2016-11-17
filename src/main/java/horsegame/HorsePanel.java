@@ -20,7 +20,6 @@ public class HorsePanel extends JPanel implements Runnable {
 	JLabel[] horseImages;
 	CenterPanel centerPanel;
 	NorthPanel northPanel;
-	SouthPanel southPanel;
 	JLabel startButton;
 	StopLogic horseLogic;
 	StrategyObserver strategyObserver;
@@ -28,7 +27,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
-	private final static int frameHeightSize = 600;
+	private final static int frameHeightSize = 610;
 	final Color basicBagroundColor = new Color(160,228,249);
 
 	public HorsePanel() {
@@ -41,7 +40,7 @@ public class HorsePanel extends JPanel implements Runnable {
 		horseImages = new JLabel[horseNumber];
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
-		southPanel = new SouthPanel();
+		//southPanel = new SouthPanel();
 		
 		//strategyObserver = new StrategyObserver();
 
@@ -58,14 +57,14 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
-		add(southPanel, BorderLayout.SOUTH);
+		//add(southPanel, BorderLayout.SOUTH);
 		
 		
 
 	}
 
 	class CenterPanel extends JPanel {
-		JLabel[] lines;
+		//JLabel[] lines;
 
 		public CenterPanel() {
 			setLayout(null);
@@ -73,7 +72,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			setVisible(true);
 			
 			ImageIcon line = new ImageIcon("src/images/line.png");
-			lines = new JLabel[horseNumber];
+			//lines = new JLabel[horseNumber];
 
 			for (int i = 0; i < horseNumber; i++) {
 
@@ -82,11 +81,11 @@ public class HorsePanel extends JPanel implements Runnable {
 				horseImages[i].setLocation(35, 50 + 100 * i);
 				horseImages[i].setSize(150, 80);
 
-				lines[i] = new JLabel(line);
-				lines[i].setSize(750, 10);
-				lines[i].setLocation(120, 130 + 100 * i);
+				//lines[i] = new JLabel(line);
+				//lines[i].setSize(750, 10);
+				//lines[i].setLocation(120, 130 + 100 * i);
 			
-				add(lines[i]);
+			//	add(lines[i]);
 				add(horseImages[i]);
 			}
 		}
@@ -101,7 +100,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		public void paintComponent(Graphics g) {
 			super.paintComponent(g);
-			ImageIcon icon = new ImageIcon("src/images/frame.png");
+			ImageIcon icon = new ImageIcon("src/images/horsePanel_backGround.png");
 			Image img = icon.getImage();
 			g.drawImage(img, 0, 0, this);
 		}
@@ -134,15 +133,15 @@ public class HorsePanel extends JPanel implements Runnable {
 		
 	}// North end
 
-	class SouthPanel extends JPanel {
+	/*class SouthPanel extends JPanel {
 		public SouthPanel() {
 			setLayout(new BorderLayout());
 			setBackground(null);
-			JLabel LabelBg = new JLabel(new ImageIcon("src/images/horsepanel_south_bg.png"));
-			add(LabelBg, BorderLayout.CENTER);
+			//JLabel LabelBg = new JLabel(new ImageIcon("src/images/horsepanel_south_bg.png"));
+			//add(LabelBg, BorderLayout.CENTER);
 		}
 	}// South end
-
+*/
 	public static int getHorseNumber() {
 		return horseNumber;
 	}
