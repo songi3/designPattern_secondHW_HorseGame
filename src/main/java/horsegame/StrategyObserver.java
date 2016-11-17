@@ -3,22 +3,30 @@ package horsegame;
 import java.util.Observable;
 import java.util.Observer;
 
-public class StrategyObserver implements Observer {
+public class StrategyObserver implements horsegame.Observer {
 
-	private RunningStrategy runningStrategy;
+	private Horse horse;
 	
-	@Override
-	public void update(Observable arg0, Object arg1) {
-		
-		if(arg1 instanceof RunningStrategy)
-			{
-			runningStrategy = (RunningStrategy)arg1;
-			displayStrategy();
-			}
+	public StrategyObserver(Horse horse) {
+		this.horse = horse;
+		System.out.println("observer create");
 	}
 	
+	/*public void update(RunningStrategy runningStrategy) {
+		this.runningStrategy = runningStrategy;
+		displayStrategy();
+	}*/
+
 	public void displayStrategy(){
-		System.out.println("Strategy : "+ runningStrategy);
+		System.out.println(horse.getName() + " Strategy : "+ horse.getRunningStrategy().getName());
 	}
 
+	@Override
+	public void update() {
+		
+		displayStrategy();
+		
+	}
+
+	
 }

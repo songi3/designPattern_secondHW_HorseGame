@@ -23,6 +23,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	SouthPanel southPanel;
 	JLabel startButton;
 	StopLogic horseLogic;
+	StrategyObserver strategyObserver;
 
 	private final static int horseNumber =3;
 	private static ArrayList<Horse> horses;
@@ -41,10 +42,13 @@ public class HorsePanel extends JPanel implements Runnable {
 		centerPanel = new CenterPanel();
 		northPanel = new NorthPanel();
 		southPanel = new SouthPanel();
+		
+		//strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
+			horses.get(i).addObserver(new StrategyObserver(horses.get(i)));
 			System.out.println(horses.get(i).getName() + " : ready "+  "----------------");
 		}
 
@@ -54,6 +58,8 @@ public class HorsePanel extends JPanel implements Runnable {
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
 		add(southPanel, BorderLayout.SOUTH);
+		
+		
 
 	}
 

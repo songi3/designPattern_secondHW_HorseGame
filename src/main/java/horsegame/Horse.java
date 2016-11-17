@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import lombok.Getter;
 import lombok.Setter;
 
-public class Horse extends Observable {
+public class Horse extends Subject {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
@@ -33,6 +33,7 @@ public class Horse extends Observable {
 
 	public void setRunningStrategy(RunningStrategy runningStrategy) {
 		this.runningStrategy = runningStrategy;
+		notifyObservers();
 	}
 
 	public JLabel getHorseLabel() {
