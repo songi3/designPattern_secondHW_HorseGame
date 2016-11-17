@@ -1,11 +1,13 @@
 package horsegame;
 
+import java.util.Observable;
+
 import javax.swing.JLabel;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class Horse {
+public class Horse extends Observable {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
