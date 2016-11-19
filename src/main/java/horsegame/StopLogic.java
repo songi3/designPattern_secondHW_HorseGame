@@ -21,9 +21,7 @@ public class StopLogic extends Thread {
 			for (int i = 0; i < horsePanel.getHorseNumber(); i++) {
 				if (horses.get(i).getX() >= endLine) {
 					Winner = horses.get(i);
-					winnerPaenl = new WinnerPanel(Winner,horsePanel);
-					//horsePanel.centerPanel.remove();
-					//horsePanel.centerPanel.setPanel(winnerPaenl);
+					winnerPaenl = new WinnerPanel(Winner, horsePanel);
 					this.interrupt();
 				}
 			}

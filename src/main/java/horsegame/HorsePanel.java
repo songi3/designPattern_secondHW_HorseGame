@@ -26,6 +26,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	JLabel startButton;
 	StopLogic horseLogic;
 	StrategyObserver strategyObserver;
+	JLabel endLabel;
 
 	private JLabel[] HeartBeatLabel;
 	private JLabel[] StrategyLabel;
@@ -88,8 +89,29 @@ public class HorsePanel extends JPanel implements Runnable {
 				horseImages[i].setSize(280, 200);
 
 				add(horseImages[i]);
-
 			}
+
+			ImageIcon push = new ImageIcon("src/images/start_button.png");
+			startButton = new JLabel(push);
+
+			startButton.addMouseListener(new MouseAdapter() {
+
+				@Override
+				public void mouseClicked(MouseEvent e) {
+					for (int i = 0; i < horseNumber; i++) {
+						startButton.setVisible(false);
+						endLabel.setVisible(true);
+						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
+						horses.get(i).run();
+
+					}
+				}
+			});
+
+			startButton.setSize(200, 200);
+			startButton.setLocation(470, 130);
+			startButton.setVisible(true);
+			add(startButton);
 		}
 
 		public void remove() {
@@ -129,19 +151,28 @@ public class HorsePanel extends JPanel implements Runnable {
 			setBackground(null);
 			setLayout(null);
 
-			ImageIcon push = new ImageIcon("src/images/start_button.png");
-			startButton = new JLabel(push);
-			startButton.addMouseListener(new MouseAdapter() {
-
+			/*
+			 * ImageIcon push = new ImageIcon("src/images/start_button.png");
+			 * startButton = new JLabel(push);
+			 */
+			endLabel = new JLabel(new ImageIcon("src/images/exitButton.png"));
+			endLabel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
-					for (int i = 0; i < horseNumber; i++) {
-						horseImages[i].setIcon(new ImageIcon("src/images/horse" + i + ".gif"));
-						horses.get(i).run();
-
-					}
+					System.exit(0);
 				}
 			});
+
+			/*
+			 * startButton.addMouseListener(new MouseAdapter() {
+			 * 
+			 * @Override public void mouseClicked(MouseEvent e) { for (int i =
+			 * 0; i < horseNumber; i++) { startButton.setVisible(false);
+			 * endLabel.setVisible(true); horseImages[i].setIcon(new
+			 * ImageIcon("src/images/horse" + i + ".gif")); horses.get(i).run();
+			 * 
+			 * } } });
+			 */
 
 			one = new ImageIcon("src/images/horsePanel_horseNameImage_1.png");
 			two = new ImageIcon("src/images/horsePanel_horseNameImage_2.png");
@@ -151,9 +182,14 @@ public class HorsePanel extends JPanel implements Runnable {
 			imageTwo = two.getImage();
 			imageThree = three.getImage();
 
-			startButton.setSize(200, 50);
-			startButton.setLocation(900, 10);
-			startButton.setVisible(true);
+			/*
+			 * startButton.setSize(200, 50); startButton.setLocation(900, 10);
+			 * startButton.setVisible(true);
+			 */
+
+			endLabel.setSize(50, 50);
+			endLabel.setLocation(1050, 0);
+			endLabel.setVisible(false);
 
 			BeatNameLabel = new JLabel[horseNumber];
 			StrategyNameLabel = new JLabel[horseNumber];
@@ -190,7 +226,8 @@ public class HorsePanel extends JPanel implements Runnable {
 				add(HeartBeatLabel[i]);
 			}
 
-			add(startButton);
+			add(endLabel);
+			// add(startButton);
 			// repaint();
 
 		}

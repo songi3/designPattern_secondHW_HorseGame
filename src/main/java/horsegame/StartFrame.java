@@ -27,19 +27,17 @@ public class StartFrame extends JFrame {
 	JLabel horseGame;
 
 	public StartFrame() {
-		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
-		
+
 		setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
-		
 		setResizable(false);
 		setUndecorated(true);
 		setVisible(true);
 		setShape(new RoundRectangle2D.Float(0, 0, this.getWidth(), this.getHeight(), 30, 30));
 
-		Dimension frameSize = this.getSize(); 
+		Dimension frameSize = this.getSize();
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
+		setLocation((screenSize.width - frameSize.width) / 2, (screenSize.height - frameSize.height) / 2);
 
 		centerPanel = new CenterPanel();
 
