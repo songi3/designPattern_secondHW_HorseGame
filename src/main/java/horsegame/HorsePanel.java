@@ -48,6 +48,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		HeartBeatLabel = new JLabel[horseNumber];
 		StrategyLabel = new JLabel[horseNumber];
+		// strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
