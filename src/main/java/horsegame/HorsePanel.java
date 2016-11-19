@@ -49,7 +49,6 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		HeartBeatLabel = new JLabel[horseNumber];
 		StrategyLabel = new JLabel[horseNumber];
-		// strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
@@ -83,7 +82,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 			for (int i = 0; i < horseNumber; i++) {
 
-				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_stop.gif");
+				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_ready.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
 				horseImages[i].setLocation(0, 150 * i + 5);
 				horseImages[i].setSize(280, 200);
