@@ -27,7 +27,7 @@ public class WinnerPanel extends JFrame {
 
 	public WinnerPanel(Horse horse, HorsePanel horsePanel) {
 		setLayout(new BorderLayout());
-		setBackground(Color.WHITE);
+		setBackground(null);
 		setSize(new Dimension(600, 450));
 		setUndecorated(true);
 
@@ -50,11 +50,11 @@ public class WinnerPanel extends JFrame {
 
 		public CenterPanel() {
 			setLayout(null);
-			setBackground(null);
+			setBackground(Color.LIGHT_GRAY);
 			setVisible(true);
 
 			horseName = new JLabel(horse.getName());
-			horseName.setLocation(260, 320);
+			horseName.setLocation(270, 320);
 			horseName.setSize(300, 100);
 			Font font1 = new Font("Times", Font.BOLD, 25);
 			horseName.setForeground(Color.BLACK);
@@ -69,7 +69,7 @@ public class WinnerPanel extends JFrame {
 
 			horseLabel = horse.getHorseLabel();
 			horseLabel.setIcon(new ImageIcon("src/images/" + horseName + ".gif"));
-			horseLabel.setLocation(100, 100);
+			horseLabel.setLocation(100, 120);
 			horseLabel.setSize(400, 200);
 
 			endLabel = new JLabel(new ImageIcon("src/images/exitButton.png"));

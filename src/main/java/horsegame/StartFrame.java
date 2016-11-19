@@ -12,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,10 +29,14 @@ public class StartFrame extends JFrame {
 	public StartFrame() {
 		//setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
+		
 		setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
+		
 		setResizable(false);
+		setUndecorated(true);
 		setVisible(true);
-		//setUndecorated(true);
+		setShape(new RoundRectangle2D.Float(0, 0, this.getWidth(), this.getHeight(), 30, 30));
+
 		Dimension frameSize = this.getSize(); 
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
