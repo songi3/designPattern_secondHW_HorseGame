@@ -183,7 +183,7 @@ public class HorsePanel extends JPanel implements Runnable {
 				
 				StrategyLabel[i].setSize(130,50);
 				StrategyLabel[i].setLocation(280*i+190, 20);
-				StrategyLabel[i].setFont(font2);
+				StrategyLabel[i].setFont(font);
 				StrategyLabel[i].setForeground(Color.BLACK);
 				
 				add(StrategyLabel[i]);

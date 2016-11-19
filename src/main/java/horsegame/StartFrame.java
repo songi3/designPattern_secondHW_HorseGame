@@ -22,6 +22,7 @@ public class StartFrame extends JFrame {
 	Container container;
 	HorsePanel horsePanel;
 	JLabel horseGame;
+
 	public StartFrame() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Horse Game");
@@ -43,33 +44,19 @@ public class StartFrame extends JFrame {
 
 	class CenterPanel extends JPanel {
 
-		ImageIcon bg = new ImageIcon("src/images/horse_main.png");
-		JButton startButton;
-
-		public void paint(Graphics g) {
-
-			g.drawImage(bg.getImage(), 0, 0, null);
-			setOpaque(false);
-		}
+		JLabel startGameLabel;
 
 		public CenterPanel() {
 			setLayout(null);
-			setBackground(Color.GRAY);
+			setVisible(true);
+			setBackground(null);
 			setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
 
-			horseGame = new JLabel("HORSE GAME");
-			horseGame.setLocation(120, 200);
-			horseGame.setSize(200, 100);
-			startButton = new JButton(new ImageIcon("src/images/push_button.png"));
-			startButton.setSize(150, 150);
-			startButton.setLocation(800, 150);
-			startButton.setBorderPainted(false);
-			startButton.setFocusPainted(false);
-			// startButton.setContentAreaFilled(false);
-			// startButton.setOpaque(false);
+			startGameLabel = new JLabel(new ImageIcon("src/images/startGame_button.png"));
+			startGameLabel.setSize(410, 120);
+			startGameLabel.setLocation(350, 420);
 
-			repaint();
-			startButton.addMouseListener(new MouseAdapter() {
+			startGameLabel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
 
@@ -84,7 +71,18 @@ public class StartFrame extends JFrame {
 				}
 			});
 
-			add(startButton);
+			add(startGameLabel);
+
+			revalidate();
+			repaint();
+		}
+
+		public void paintComponent(Graphics g) {
+			super.paintComponent(g);
+			ImageIcon icon = new ImageIcon("src/images/horse_main.png");
+			Image img = icon.getImage();
+			g.drawImage(img, 0, 0, this);
+
 		}
 
 	}

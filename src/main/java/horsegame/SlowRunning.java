@@ -11,7 +11,7 @@ public class SlowRunning extends RunningStrategy {
 	}
 
 	public String getName() {
-		return "SlowRunning";
+		return "Slow";
 	}
 
 	public void downEnergy() {

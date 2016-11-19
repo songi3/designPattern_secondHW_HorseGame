@@ -11,7 +11,7 @@ public class BasicRunning extends RunningStrategy {
 	}
 	
 	public String getName() {
-		return "BasicRunning";
+		return "Basic";
 	}
 
 	@Override

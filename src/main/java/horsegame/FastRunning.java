@@ -11,7 +11,7 @@ public class FastRunning extends RunningStrategy  {
 	}
 	
 	public String getName() {
-		return "FastRunning";
+		return "Fast";
 	}
 
 	@Override
