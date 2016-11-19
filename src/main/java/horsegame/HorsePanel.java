@@ -5,6 +5,7 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -25,9 +26,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	JLabel startButton;
 	StopLogic horseLogic;
 	StrategyObserver strategyObserver;
-
-	ArrayList<JLabel> horseNameLabel;
-	ArrayList<JLabel> horseBeatLabel;
+	JLabel[] HeartBeatLabel;
 
 	private final static int horseNumber = 3;
 	private static ArrayList<Horse> horses;
@@ -44,12 +43,8 @@ public class HorsePanel extends JPanel implements Runnable {
 		imageIcons = new ImageIcon[horseNumber];
 		horseImages = new JLabel[horseNumber];
 		centerPanel = new CenterPanel();
-		northPanel = new NorthPanel();
-		// southPanel = new SouthPanel();
 
-		horseNameLabel = new ArrayList<JLabel>();
-		horseBeatLabel = new ArrayList<JLabel>();
-
+		HeartBeatLabel = new JLabel[horseNumber];
 		// strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
@@ -58,11 +53,12 @@ public class HorsePanel extends JPanel implements Runnable {
 			horses.get(i).addObserver(new StrategyObserver(horses.get(i)));
 			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
 
-			horseNameLabel.add(new JLabel(horses.get(i).getName()));
-			horseBeatLabel.add(new JLabel(horses.get(i).getHeartBeat().toString()));
+			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
 
 			System.out.println(horses.get(i).getName() + " : ready " + "----------------");
 		}
+
+		northPanel = new NorthPanel();
 
 		horseLogic = new StopLogic(this);
 		horseLogic.start();
@@ -120,6 +116,8 @@ public class HorsePanel extends JPanel implements Runnable {
 		Image imageTwo;
 		Image imageThree;
 
+		JLabel[] BeatNameLabel;
+		
 		public NorthPanel() {
 
 			setPreferredSize(new Dimension(1000, 100));
@@ -159,9 +157,29 @@ public class HorsePanel extends JPanel implements Runnable {
 			 * imageThree.setLocation(100, 50); imageThree.setSize(70, 70);
 			 */
 
-			startButton.setSize(70, 70);
+			startButton.setSize(200, 50);
 			startButton.setLocation(900, 10);
 			startButton.setVisible(true);
+			
+			BeatNameLabel= new JLabel[horseNumber];
+			Font font = new Font("돋움",Font.BOLD,20);
+			
+			for(int i=0;i<horseNumber;i++){
+				BeatNameLabel[i] = new JLabel("HeartBeat : ");
+				BeatNameLabel[i].setSize(150,50);
+				BeatNameLabel[i].setLocation(215*i+100, 0);
+				BeatNameLabel[i].setFont(font);
+				BeatNameLabel[i].setForeground(Color.BLACK);
+				
+				HeartBeatLabel[i].setSize(50,50);
+				HeartBeatLabel[i].setLocation(215*i+210, 0);
+				HeartBeatLabel[i].setFont(font);
+				HeartBeatLabel[i].setForeground(Color.BLACK);
+				
+				add(BeatNameLabel[i]);
+				add(HeartBeatLabel[i]);
+			}
+			
 			add(startButton);
 			// repaint();
 
@@ -173,8 +191,8 @@ public class HorsePanel extends JPanel implements Runnable {
 			Image img = icon.getImage();
 			g.drawImage(img, 0, 0, this);
 			g.drawImage(imageOne, 20, 0, this);
-			g.drawImage(imageTwo, 220, 0, this);
-			g.drawImage(imageThree, 420, 0, this);
+			g.drawImage(imageTwo, 240, 0, this);
+			g.drawImage(imageThree, 460, 0, this);
 
 		}
 
