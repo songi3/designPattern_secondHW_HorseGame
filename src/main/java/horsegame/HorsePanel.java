@@ -29,6 +29,8 @@ public class HorsePanel extends JPanel implements Runnable {
 	
 	
 	private JLabel[] HeartBeatLabel;
+	private JLabel[] StrategyLabel;
+	
 	private final static int horseNumber = 3;
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
@@ -46,16 +48,18 @@ public class HorsePanel extends JPanel implements Runnable {
 		centerPanel = new CenterPanel();
 
 		HeartBeatLabel = new JLabel[horseNumber];
+		StrategyLabel = new JLabel[horseNumber];
 		// strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
-			horses.get(i).addObserver(new StrategyObserver(horses.get(i)));
+			horses.get(i).addObserver(new StrategyObserver(horses.get(i),this));
 			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
 			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i),this));
 
 			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
+			StrategyLabel[i] = new JLabel(horses.get(i).getRunningStrategy().getName());
 
 			System.out.println(horses.get(i).getName() + " : ready " + "----------------");
 		}
@@ -67,8 +71,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
-		// add(southPanel, BorderLayout.SOUTH);
-
+		
 	}
 
 	class CenterPanel extends JPanel {
@@ -119,6 +122,7 @@ public class HorsePanel extends JPanel implements Runnable {
 		Image imageThree;
 
 		JLabel[] BeatNameLabel;
+		JLabel[] StrategyNameLabel;
 		
 		public NorthPanel() {
 
@@ -149,35 +153,41 @@ public class HorsePanel extends JPanel implements Runnable {
 			imageTwo = two.getImage();
 			imageThree = three.getImage();
 
-			/*
-			 * imageOne = new JLabel(one); imageTwo = new JLabel(two);
-			 * imageThree = new JLabel(three);
-			 * 
-			 * 
-			 * imageTwo.setLocation(100, 50); imageTwo.setSize(70, 70);
-			 * 
-			 * imageThree.setLocation(100, 50); imageThree.setSize(70, 70);
-			 */
-
 			startButton.setSize(200, 50);
 			startButton.setLocation(900, 10);
 			startButton.setVisible(true);
 			
 			BeatNameLabel= new JLabel[horseNumber];
+			StrategyNameLabel = new JLabel[horseNumber];
+			
 			Font font = new Font("돋움",Font.BOLD,20);
+			Font font2 = new Font("돋움",Font.BOLD,15);
 			
 			for(int i=0;i<horseNumber;i++){
 				BeatNameLabel[i] = new JLabel("HeartBeat : ");
 				BeatNameLabel[i].setSize(150,50);
-				BeatNameLabel[i].setLocation(215*i+100, 0);
+				BeatNameLabel[i].setLocation(280*i+90, 0);
 				BeatNameLabel[i].setFont(font);
 				BeatNameLabel[i].setForeground(Color.BLACK);
 				
 				HeartBeatLabel[i].setSize(50,50);
-				HeartBeatLabel[i].setLocation(215*i+210, 0);
+				HeartBeatLabel[i].setLocation(280*i+210, 0);
 				HeartBeatLabel[i].setFont(font);
 				HeartBeatLabel[i].setForeground(Color.BLACK);
 				
+				StrategyNameLabel[i] = new JLabel("Strategy : ");
+				StrategyNameLabel[i].setSize(170,50);
+				StrategyNameLabel[i].setLocation(280*i+90, 20);
+				StrategyNameLabel[i].setFont(font);
+				StrategyNameLabel[i].setForeground(Color.BLACK);
+				
+				StrategyLabel[i].setSize(130,50);
+				StrategyLabel[i].setLocation(280*i+190, 20);
+				StrategyLabel[i].setFont(font2);
+				StrategyLabel[i].setForeground(Color.BLACK);
+				
+				add(StrategyLabel[i]);
+				add(StrategyNameLabel[i]);
 				add(BeatNameLabel[i]);
 				add(HeartBeatLabel[i]);
 			}
@@ -193,8 +203,8 @@ public class HorsePanel extends JPanel implements Runnable {
 			Image img = icon.getImage();
 			g.drawImage(img, 0, 0, this);
 			g.drawImage(imageOne, 20, 0, this);
-			g.drawImage(imageTwo, 240, 0, this);
-			g.drawImage(imageThree, 460, 0, this);
+			g.drawImage(imageTwo, 300, 0, this);
+			g.drawImage(imageThree, 580, 0, this);
 
 		}
 
@@ -229,6 +239,14 @@ public class HorsePanel extends JPanel implements Runnable {
 	
 	public  JLabel[] getHeartBeatLabel() {
 		return HeartBeatLabel;
+	}
+	
+	public JLabel[] getStrategyLabel() {
+		return StrategyLabel;
+	}
+
+	public void setStrategyLabel(JLabel[] strategyLabel) {
+		StrategyLabel = strategyLabel;
 	}
 
 	@Override
