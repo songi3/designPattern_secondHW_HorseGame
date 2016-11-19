@@ -26,8 +26,9 @@ public class HorsePanel extends JPanel implements Runnable {
 	JLabel startButton;
 	StopLogic horseLogic;
 	StrategyObserver strategyObserver;
-	JLabel[] HeartBeatLabel;
-
+	
+	
+	private JLabel[] HeartBeatLabel;
 	private final static int horseNumber = 3;
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
@@ -52,6 +53,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			horses.get(i).setName("horse" + i);
 			horses.get(i).addObserver(new StrategyObserver(horses.get(i)));
 			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
+			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i),this));
 
 			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
 
@@ -218,6 +220,15 @@ public class HorsePanel extends JPanel implements Runnable {
 
 	public static ArrayList<Horse> getHorses() {
 		return horses;
+	}
+
+	
+	public  void setHeartBeatLabel(JLabel[] heartBeatLabel) {
+		HeartBeatLabel = heartBeatLabel;
+	}
+	
+	public  JLabel[] getHeartBeatLabel() {
+		return HeartBeatLabel;
 	}
 
 	@Override

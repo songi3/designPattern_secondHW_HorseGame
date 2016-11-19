@@ -18,4 +18,9 @@ public class SlowRunning extends RunningStrategy {
 		horse.setEnergy(horse.getEnergy()-3);
 	}
 	
+	@Override
+	public void changeHeartBeat() {
+		horse.setHeartBeat(60);
+	}
+	
 }

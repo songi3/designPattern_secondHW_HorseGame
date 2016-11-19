@@ -18,4 +18,9 @@ public class BasicRunning extends RunningStrategy {
 	public void downEnergy() {
 		horse.setEnergy(horse.getEnergy()-5);
 	}
+
+	@Override
+	public void changeHeartBeat() {
+		horse.setHeartBeat(80);
+	}
 }

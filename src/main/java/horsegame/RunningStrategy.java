@@ -14,4 +14,6 @@ public abstract class RunningStrategy {
 	public abstract void run();
 
 	public abstract void downEnergy();
+	
+	public abstract void changeHeartBeat();
 }

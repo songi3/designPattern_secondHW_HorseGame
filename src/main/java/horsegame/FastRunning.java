@@ -19,4 +19,11 @@ public class FastRunning extends RunningStrategy  {
 		horse.setEnergy(horse.getEnergy()-10);
 	}
 
+	@Override
+	public void changeHeartBeat() {
+		horse.setHeartBeat(100);
+	}
+	
+	
+
 }

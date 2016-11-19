@@ -20,4 +20,10 @@ public class VeryFastRunning extends RunningStrategy {
 	public void downEnergy() {
 		horse.setEnergy(horse.getEnergy()-20);
 	}
+	
+	@Override
+	public void changeHeartBeat() {
+		horse.setHeartBeat(130);
+	}
+	
 }
