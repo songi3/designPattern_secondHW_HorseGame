@@ -9,7 +9,7 @@ public class VeryFastRunning extends RunningStrategy {
 	}
 
 	public void run() {
-		horse.setLocation(horse.getX() + 11, horse.getY());
+		horse.setLocation(horse.getX() + 15, horse.getY());
 	}
 	
 	public String getName() {
