@@ -28,6 +28,7 @@ public class HorsePanel extends JPanel implements Runnable {
 	StrategyObserver strategyObserver;
 	JLabel endLabel;
 
+	private JLabel[] EnergyBar;
 	private JLabel[] HeartBeatLabel;
 	private JLabel[] StrategyLabel;
 
@@ -43,15 +44,15 @@ public class HorsePanel extends JPanel implements Runnable {
 		setBackground(Color.white);
 
 		horses = new ArrayList<Horse>();
+		EnergyBar = new JLabel[horseNumber];
 		imageIcons = new ImageIcon[horseNumber];
 		horseImages = new JLabel[horseNumber];
 		centerPanel = new CenterPanel();
-
 		HeartBeatLabel = new JLabel[horseNumber];
 		StrategyLabel = new JLabel[horseNumber];
 
 		for (int i = 0; i < horseNumber; i++) {
-			horses.add(new Horse(horseImages[i]));
+			horses.add(new Horse(horseImages[i],EnergyBar[i]));
 			horses.get(i).setName("horse" + i);
 			horses.get(i).addObserver(new StrategyObserver(horses.get(i), this));
 			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
@@ -84,10 +85,15 @@ public class HorsePanel extends JPanel implements Runnable {
 
 				imageIcons[i] = new ImageIcon("src/images/horse" + i + "_ready.gif");
 				horseImages[i] = new JLabel(imageIcons[i]);
-				horseImages[i].setLocation(0, 150 * i + 30);
+				horseImages[i].setLocation(0, 150 * i + 60);
 				horseImages[i].setSize(280, 200);
 
+				EnergyBar[i] = new JLabel(new ImageIcon("src/images/energy_high.png"));
+				EnergyBar[i].setLocation(100, 150 * i + 90);
+				EnergyBar[i].setSize(100, 8);
+			
 				add(horseImages[i]);
+				add(EnergyBar[i]);
 			}
 
 			ImageIcon push = new ImageIcon("src/images/start_button.png");

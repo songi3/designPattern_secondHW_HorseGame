@@ -8,6 +8,7 @@ public class SlowRunning extends RunningStrategy {
 
 	public void run() {
 		horse.setLocation(horse.getX() + 8, horse.getY());
+		
 	}
 
 	public String getName() {
