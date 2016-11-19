@@ -52,10 +52,10 @@ public class HorsePanel extends JPanel implements Runnable {
 		StrategyLabel = new JLabel[horseNumber];
 
 		for (int i = 0; i < horseNumber; i++) {
-			horses.add(new Horse(horseImages[i],EnergyBar[i]));
+			horses.add(new Horse(horseImages[i], EnergyBar[i]));
 			horses.get(i).setName("horse" + i);
 			horses.get(i).addObserver(new StrategyObserver(horses.get(i), this));
-			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
+			horses.get(i).addObserver(new EnergyObserver(horses.get(i), this));
 			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i), this));
 
 			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
@@ -90,15 +90,14 @@ public class HorsePanel extends JPanel implements Runnable {
 
 				EnergyBar[i] = new JLabel(new ImageIcon("src/images/energy_high.png"));
 				EnergyBar[i].setLocation(100, 150 * i + 90);
-				EnergyBar[i].setSize(100, 8);
-			
+				EnergyBar[i].setSize(90, 8);
+
 				add(horseImages[i]);
 				add(EnergyBar[i]);
 			}
 
 			ImageIcon push = new ImageIcon("src/images/start_button.png");
 			startButton = new JLabel(push);
-
 			startButton.addMouseListener(new MouseAdapter() {
 
 				@Override
@@ -280,6 +279,14 @@ public class HorsePanel extends JPanel implements Runnable {
 
 	public void setStrategyLabel(JLabel[] strategyLabel) {
 		StrategyLabel = strategyLabel;
+	}
+
+	public JLabel[] getEnergyBar() {
+		return EnergyBar;
+	}
+
+	public void setEnergyBar(JLabel[] energyBar) {
+		EnergyBar = energyBar;
 	}
 
 	@Override

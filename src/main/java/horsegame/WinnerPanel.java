@@ -50,7 +50,7 @@ public class WinnerPanel extends JFrame {
 
 		public CenterPanel() {
 			setLayout(null);
-			setBackground(Color.LIGHT_GRAY);
+			setBackground(Color.WHITE);
 			setVisible(true);
 
 			horseName = new JLabel(horse.getName());

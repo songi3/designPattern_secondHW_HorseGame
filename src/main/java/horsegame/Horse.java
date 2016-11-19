@@ -42,7 +42,7 @@ public class Horse extends Subject {
 		return name;
 	}
 
-	public Horse(JLabel horseLabel,JLabel energyLabel) {
+	public Horse(JLabel horseLabel, JLabel energyLabel) {
 		this.horseLabel = horseLabel;
 		this.energyLabel = energyLabel;
 		setRunningStrategy(new BasicRunning(this));
@@ -61,6 +61,10 @@ public class Horse extends Subject {
 		return horseLabel;
 	}
 
+	public JLabel getEnergyLabel() {
+		return energyLabel;
+	}
+
 	public int getX() {
 		return horseLabel.getX();
 	}
@@ -71,7 +75,7 @@ public class Horse extends Subject {
 
 	public void setLocation(int x, int y) {
 		horseLabel.setLocation(x, y);
-		energyLabel.setLocation(x+100, y+30);
+		energyLabel.setLocation(x + 100, y + 30);
 	}
 
 	public void stop() {
