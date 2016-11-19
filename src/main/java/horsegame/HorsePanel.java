@@ -26,11 +26,10 @@ public class HorsePanel extends JPanel implements Runnable {
 	JLabel startButton;
 	StopLogic horseLogic;
 	StrategyObserver strategyObserver;
-	
-	
+
 	private JLabel[] HeartBeatLabel;
 	private JLabel[] StrategyLabel;
-	
+
 	private final static int horseNumber = 3;
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
@@ -49,14 +48,13 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		HeartBeatLabel = new JLabel[horseNumber];
 		StrategyLabel = new JLabel[horseNumber];
-		// strategyObserver = new StrategyObserver();
 
 		for (int i = 0; i < horseNumber; i++) {
 			horses.add(new Horse(horseImages[i]));
 			horses.get(i).setName("horse" + i);
-			horses.get(i).addObserver(new StrategyObserver(horses.get(i),this));
+			horses.get(i).addObserver(new StrategyObserver(horses.get(i), this));
 			horses.get(i).addObserver(new EnergyObserver(horses.get(i)));
-			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i),this));
+			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i), this));
 
 			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
 			StrategyLabel[i] = new JLabel(horses.get(i).getRunningStrategy().getName());
@@ -71,11 +69,10 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		add(centerPanel, BorderLayout.CENTER);
 		add(northPanel, BorderLayout.NORTH);
-		
+
 	}
 
 	class CenterPanel extends JPanel {
-		// JLabel[] lines;
 
 		public CenterPanel() {
 			setLayout(null);
@@ -123,7 +120,7 @@ public class HorsePanel extends JPanel implements Runnable {
 
 		JLabel[] BeatNameLabel;
 		JLabel[] StrategyNameLabel;
-		
+
 		public NorthPanel() {
 
 			setPreferredSize(new Dimension(1000, 100));
@@ -156,42 +153,42 @@ public class HorsePanel extends JPanel implements Runnable {
 			startButton.setSize(200, 50);
 			startButton.setLocation(900, 10);
 			startButton.setVisible(true);
-			
-			BeatNameLabel= new JLabel[horseNumber];
+
+			BeatNameLabel = new JLabel[horseNumber];
 			StrategyNameLabel = new JLabel[horseNumber];
-			
-			Font font = new Font("돋움",Font.BOLD,20);
-			Font font2 = new Font("돋움",Font.BOLD,15);
-			
-			for(int i=0;i<horseNumber;i++){
+
+			Font font = new Font("돋움", Font.BOLD, 20);
+			Font font2 = new Font("돋움", Font.BOLD, 15);
+
+			for (int i = 0; i < horseNumber; i++) {
 				BeatNameLabel[i] = new JLabel("HeartBeat : ");
-				BeatNameLabel[i].setSize(150,50);
-				BeatNameLabel[i].setLocation(280*i+90, 0);
+				BeatNameLabel[i].setSize(150, 50);
+				BeatNameLabel[i].setLocation(280 * i + 90, 0);
 				BeatNameLabel[i].setFont(font);
 				BeatNameLabel[i].setForeground(Color.BLACK);
-				
-				HeartBeatLabel[i].setSize(50,50);
-				HeartBeatLabel[i].setLocation(280*i+210, 0);
+
+				HeartBeatLabel[i].setSize(50, 50);
+				HeartBeatLabel[i].setLocation(280 * i + 210, 0);
 				HeartBeatLabel[i].setFont(font);
 				HeartBeatLabel[i].setForeground(Color.BLACK);
-				
+
 				StrategyNameLabel[i] = new JLabel("Strategy : ");
-				StrategyNameLabel[i].setSize(170,50);
-				StrategyNameLabel[i].setLocation(280*i+90, 20);
+				StrategyNameLabel[i].setSize(170, 50);
+				StrategyNameLabel[i].setLocation(280 * i + 90, 20);
 				StrategyNameLabel[i].setFont(font);
 				StrategyNameLabel[i].setForeground(Color.BLACK);
-				
-				StrategyLabel[i].setSize(130,50);
-				StrategyLabel[i].setLocation(280*i+190, 20);
+
+				StrategyLabel[i].setSize(130, 50);
+				StrategyLabel[i].setLocation(280 * i + 190, 20);
 				StrategyLabel[i].setFont(font);
 				StrategyLabel[i].setForeground(Color.BLACK);
-				
+
 				add(StrategyLabel[i]);
 				add(StrategyNameLabel[i]);
 				add(BeatNameLabel[i]);
 				add(HeartBeatLabel[i]);
 			}
-			
+
 			add(startButton);
 			// repaint();
 
@@ -210,12 +207,6 @@ public class HorsePanel extends JPanel implements Runnable {
 
 	}// North end
 
-	/*
-	 * class SouthPanel extends JPanel { public SouthPanel() { setLayout(new
-	 * BorderLayout()); setBackground(null); //JLabel LabelBg = new JLabel(new
-	 * ImageIcon("src/images/horsepanel_south_bg.png")); //add(LabelBg,
-	 * BorderLayout.CENTER); } }// South end
-	 */
 	public static int getHorseNumber() {
 		return horseNumber;
 	}
@@ -232,15 +223,14 @@ public class HorsePanel extends JPanel implements Runnable {
 		return horses;
 	}
 
-	
-	public  void setHeartBeatLabel(JLabel[] heartBeatLabel) {
+	public void setHeartBeatLabel(JLabel[] heartBeatLabel) {
 		HeartBeatLabel = heartBeatLabel;
 	}
-	
-	public  JLabel[] getHeartBeatLabel() {
+
+	public JLabel[] getHeartBeatLabel() {
 		return HeartBeatLabel;
 	}
-	
+
 	public JLabel[] getStrategyLabel() {
 		return StrategyLabel;
 	}

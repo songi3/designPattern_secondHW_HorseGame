@@ -2,10 +2,12 @@ package horsegame;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -29,6 +31,10 @@ public class StartFrame extends JFrame {
 		setSize(horsePanel.getFramewidthsize(), horsePanel.getFrameheightsize());
 		setResizable(false);
 		setVisible(true);
+		
+		Dimension frameSize = this.getSize(); 
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
 
 		centerPanel = new CenterPanel();
 

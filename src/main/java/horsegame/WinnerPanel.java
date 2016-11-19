@@ -4,26 +4,38 @@ import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.geom.RoundRectangle2D;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class WinnerPanel extends JPanel {
+public class WinnerPanel extends JFrame {
 	
 	JLabel horseName;
 	JLabel horseLabel;
 	JLabel ment;
-
-	public WinnerPanel(Horse horse) {
+	HorsePanel horsePanel;
+	
+	public WinnerPanel(Horse horse,HorsePanel horsePanel) {
 		setLayout(null); 
 		setBackground(Color.WHITE);
+		setSize(new Dimension(600,450));
+		setUndecorated(true);
+		
+		Dimension frameSize = this.getSize(); 
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		setLocation((screenSize.width - frameSize.width)/2, (screenSize.height - frameSize.height)/2);
 		setVisible(true);
-		setSize(new Dimension(800,300));
-		setLocation(80, 50);
-	
+		
+		this.horsePanel = horsePanel;
+		
+		
+		
 		horseName = new JLabel(horse.getName());
 		horseName.setLocation(370, 200);
 		horseName.setSize(300, 100);
