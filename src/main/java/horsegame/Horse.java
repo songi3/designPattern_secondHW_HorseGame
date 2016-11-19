@@ -14,7 +14,17 @@ public class Horse extends Subject {
 	private Running running;
 	private ChooseStrategy chooseStrategy;
 	
+	private Integer heartBeat = 80;
 	private int Energy = 100;
+	
+	public Integer getHeartBeat() {
+		return heartBeat;
+	}
+
+	public void setHeartBeat(int heartBeat) {
+		this.heartBeat = heartBeat;
+	}
+
 	public int getEnergy() {
 		return Energy;
 	}
