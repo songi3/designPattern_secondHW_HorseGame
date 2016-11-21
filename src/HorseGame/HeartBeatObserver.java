@@ -34,5 +34,4 @@ public class HeartBeatObserver implements Observer {
 		 horse.getRunningStrategy().changeHeartBeat();
 		 displayStrategy(); 
 	}
-
 }

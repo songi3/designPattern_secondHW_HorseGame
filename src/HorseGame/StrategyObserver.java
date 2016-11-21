@@ -13,11 +13,9 @@ public class StrategyObserver implements HorseGame.Observer {
 	public StrategyObserver(Horse horse,HorsePanel horsePanel) {
 		this.horse = horse;
 		this.horsePanel = horsePanel;
-		System.out.println("observer create");
 	}
 
 	public void displayStrategy() {
-		System.out.println(horse.getName() + " Strategy : " + horse.getRunningStrategy().getName());
 		
 		JLabel [] strategyLabel = horsePanel.getStrategyLabel();
 		

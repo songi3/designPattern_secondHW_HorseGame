@@ -36,7 +36,6 @@ public class HorsePanel extends JPanel implements Runnable {
 	private static ArrayList<Horse> horses;
 	private final static int frameWidthSize = 1100;
 	private final static int frameHeightSize = 650;
-	final Color basicBagroundColor = new Color(160, 228, 249);
 
 	public HorsePanel() {
 		this.setSize(frameWidthSize, frameHeightSize);
@@ -59,9 +58,9 @@ public class HorsePanel extends JPanel implements Runnable {
 			horses.get(i).addObserver(new HeartBeatObserver(horses.get(i), this));
 
 			HeartBeatLabel[i] = new JLabel(horses.get(i).getHeartBeat().toString());
+		
 			StrategyLabel[i] = new JLabel(horses.get(i).getRunningStrategy().getName());
-
-			System.out.println(horses.get(i).getName() + " : ready " + "----------------");
+			
 		}
 
 		northPanel = new NorthPanel();
@@ -83,12 +82,14 @@ public class HorsePanel extends JPanel implements Runnable {
 
 			for (int i = 0; i < horseNumber; i++) {
 
-				imageIcons[i] = new ImageIcon(getClass().getClassLoader().getResource("images/horse" + i + "_ready.gif"));
+				imageIcons[i] = new ImageIcon(
+						getClass().getClassLoader().getResource("images/horse" + i + "_ready.gif"));
 				horseImages[i] = new JLabel(imageIcons[i]);
 				horseImages[i].setLocation(0, 150 * i + 60);
 				horseImages[i].setSize(280, 200);
 
-				EnergyBar[i] = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("images/energy_high.png")));
+				EnergyBar[i] = new JLabel(
+						new ImageIcon(getClass().getClassLoader().getResource("images/energy_high.png")));
 				EnergyBar[i].setLocation(100, 150 * i + 90);
 				EnergyBar[i].setSize(90, 8);
 
@@ -105,7 +106,8 @@ public class HorsePanel extends JPanel implements Runnable {
 					for (int i = 0; i < horseNumber; i++) {
 						startButton.setVisible(false);
 						endLabel.setVisible(true);
-						horseImages[i].setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/horse" + i + ".gif")));
+						horseImages[i].setIcon(
+								new ImageIcon(getClass().getClassLoader().getResource("images/horse" + i + ".gif")));
 						horses.get(i).run();
 
 					}
@@ -154,7 +156,7 @@ public class HorsePanel extends JPanel implements Runnable {
 			setVisible(true);
 			setBackground(null);
 			setLayout(null);
-			
+
 			endLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("images/exitButton.png")));
 			endLabel.addMouseListener(new MouseAdapter() {
 				@Override
@@ -162,17 +164,6 @@ public class HorsePanel extends JPanel implements Runnable {
 					System.exit(0);
 				}
 			});
-
-			/*
-			 * startButton.addMouseListener(new MouseAdapter() {
-			 * 
-			 * @Override public void mouseClicked(MouseEvent e) { for (int i =
-			 * 0; i < horseNumber; i++) { startButton.setVisible(false);
-			 * endLabel.setVisible(true); horseImages[i].setIcon(new
-			 * ImageIcon("src/images/horse" + i + ".gif")); horses.get(i).run();
-			 * 
-			 * } } });
-			 */
 
 			one = new ImageIcon(getClass().getClassLoader().getResource("images/horsePanel_horseNameImage_1.png"));
 			two = new ImageIcon(getClass().getClassLoader().getResource("images/horsePanel_horseNameImage_2.png"));
@@ -189,8 +180,8 @@ public class HorsePanel extends JPanel implements Runnable {
 			BeatNameLabel = new JLabel[horseNumber];
 			StrategyNameLabel = new JLabel[horseNumber];
 
-			Font font = new Font("?‹??", Font.BOLD, 20);
-			Font font2 = new Font("?‹??", Font.BOLD, 15);
+			Font font = new Font("ê²¬ê³ ë”•", Font.BOLD, 20);
+			Font font2 = new Font("ê²¬ê³ ë”•", Font.BOLD, 15);
 
 			for (int i = 0; i < horseNumber; i++) {
 				BeatNameLabel[i] = new JLabel("HeartBeat : ");
@@ -222,8 +213,6 @@ public class HorsePanel extends JPanel implements Runnable {
 			}
 
 			add(endLabel);
-			// add(startButton);
-			// repaint();
 
 		}
 
@@ -286,7 +275,6 @@ public class HorsePanel extends JPanel implements Runnable {
 			revalidate();
 			repaint();
 			try {
-
 				Thread.sleep(5);
 			} catch (InterruptedException e) {
 			}

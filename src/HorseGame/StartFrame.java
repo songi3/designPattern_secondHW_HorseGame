@@ -42,9 +42,7 @@ public class StartFrame extends JFrame {
 
 		container = getContentPane();
 		container.setLayout(null);
-
 		container.add(centerPanel);
-
 		container.revalidate();
 		container.repaint();
 
@@ -63,7 +61,6 @@ public class StartFrame extends JFrame {
 			startGameLabel = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("images/startGame_button.png")));
 			startGameLabel.setSize(410, 120);
 			startGameLabel.setLocation(350, 420);
-
 			startGameLabel.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {

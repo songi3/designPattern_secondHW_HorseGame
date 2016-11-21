@@ -15,8 +15,7 @@ public class EnergyObserver implements Observer {
 	}
 
 	public void displayStrategy() {
-		System.out.println(horse.getName() + " Energy : " + horse.getEnergy());
-
+	
 		JLabel[] energyLabel = horsePanel.getEnergyBar();
 		JLabel energy = null;
 
@@ -37,7 +36,7 @@ public class EnergyObserver implements Observer {
 			energy.setIcon(new ImageIcon(getClass().getClassLoader().getResource("images/energy_low.png")));
 
 		energyLabel[number] = energy;
-		horsePanel.setHeartBeatLabel(energyLabel);
+		horsePanel.setEnergyBar(energyLabel);
 	}
 
 	@Override

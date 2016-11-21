@@ -15,22 +15,18 @@ public class ChooseStrategy extends Thread {
 		switch (randomNumber) {
 		case 1:
 			horse.setRunningStrategy(new VeryFastRunning(horse));
-			//System.out.println(horse.getName() + " : verFast");
 			break;
 
 		case 2:
 			horse.setRunningStrategy(new SlowRunning(horse));
-			//System.out.println(horse.getName() + " : slow");
 			break;
 
 		case 3:
 			horse.setRunningStrategy(new BasicRunning(horse));
-			//System.out.println(horse.getName() + " : basic");
 			break;
 
 		case 4:
 			horse.setRunningStrategy(new FastRunning(horse));
-			//System.out.println(horse.getName() + " : fast");
 			break;
 		}
 	}
@@ -45,7 +41,6 @@ public class ChooseStrategy extends Thread {
 			} catch (InterruptedException e) {
 				return;
 			}
-
 		}
 	}
 }
