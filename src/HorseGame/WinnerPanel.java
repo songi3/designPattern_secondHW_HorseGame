@@ -57,7 +57,7 @@ public class WinnerPanel extends JFrame {
 	
 			setLayout(null);
 			setVisible(true);
-			setBackground(Color.GRAY);
+			setBackground(Color.WHITE);
 			setSize(new Dimension(600, 450));
 
 			one = new ImageIcon(getClass().getClassLoader().getResource("images/horsePanel_horseNameImage_1.png"));

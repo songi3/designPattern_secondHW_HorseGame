@@ -7,7 +7,7 @@ public class BasicRunning extends RunningStrategy {
 	}
 
 	public void run() {
-		horse.setLocation(horse.getX() + 10, horse.getY());
+		horse.setLocation(horse.getX() + 9, horse.getY());
 	}
 	
 	public String getName() {
