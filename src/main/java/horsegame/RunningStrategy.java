@@ -1,6 +1,19 @@
 package horsegame;
 
-public interface RunningStrategy {
+public abstract class RunningStrategy {
+
+	protected Horse horse;
+
+	public RunningStrategy(Horse horse) {
+		super();
+		this.horse = horse;
+	}
+
+	public abstract String getName();
+
+	public abstract void run();
+
+	public abstract void downEnergy();
 	
-	public void run(Horse horse);
+	public abstract void changeHeartBeat();
 }

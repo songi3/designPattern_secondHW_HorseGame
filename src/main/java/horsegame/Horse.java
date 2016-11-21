@@ -1,16 +1,38 @@
 package horsegame;
 
+import java.util.Observable;
+
 import javax.swing.JLabel;
 
 import lombok.Getter;
 import lombok.Setter;
 
-public class Horse {
+public class Horse extends Subject {
 	private RunningStrategy runningStrategy;
 	private String name;
 	private JLabel horseLabel;
+	private JLabel energyLabel;
 	private Running running;
 	private ChooseStrategy chooseStrategy;
+
+	private Integer heartBeat = 80;
+	private int Energy = 100;
+
+	public Integer getHeartBeat() {
+		return heartBeat;
+	}
+
+	public void setHeartBeat(int heartBeat) {
+		this.heartBeat = heartBeat;
+	}
+
+	public int getEnergy() {
+		return Energy;
+	}
+
+	public void setEnergy(int energy) {
+		Energy = energy;
+	}
 
 	public void setName(String name) {
 		this.name = name;
@@ -20,9 +42,10 @@ public class Horse {
 		return name;
 	}
 
-	public Horse(JLabel horseLabel) {
+	public Horse(JLabel horseLabel, JLabel energyLabel) {
 		this.horseLabel = horseLabel;
-		setRunningStrategy(new BasicRunning());
+		this.energyLabel = energyLabel;
+		setRunningStrategy(new BasicRunning(this));
 	}
 
 	public RunningStrategy getRunningStrategy() {
@@ -31,10 +54,15 @@ public class Horse {
 
 	public void setRunningStrategy(RunningStrategy runningStrategy) {
 		this.runningStrategy = runningStrategy;
+		notifyObservers();
 	}
 
 	public JLabel getHorseLabel() {
 		return horseLabel;
+	}
+
+	public JLabel getEnergyLabel() {
+		return energyLabel;
 	}
 
 	public int getX() {
@@ -47,6 +75,7 @@ public class Horse {
 
 	public void setLocation(int x, int y) {
 		horseLabel.setLocation(x, y);
+		energyLabel.setLocation(x + 100, y + 30);
 	}
 
 	public void stop() {

@@ -13,14 +13,15 @@ public class Running extends Thread {
 
 		while (!Thread.currentThread().isInterrupted()) {
 
-			horse.getRunningStrategy().run(horse);
+			horse.getRunningStrategy().run();
 
 			try {
 				Thread.sleep(150);
 			}
 
 			catch (InterruptedException e) {
-				horse.getHorseLabel().setIcon(new ImageIcon("src/images/" + horse.getName() + "_stop.gif"));
+				horse.getEnergyLabel().setVisible(false);
+				horse.getHorseLabel().setIcon(new ImageIcon("src/images/" + horse.getName() + "_ready.gif"));
 				return;
 			}
 		}
