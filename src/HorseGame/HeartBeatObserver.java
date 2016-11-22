@@ -14,7 +14,6 @@ public class HeartBeatObserver implements Observer {
 	}
 
 	public void displayStrategy() {
-		System.out.println(horse.getName() + " HertBeat : " + horse.getHeartBeat());
 
 		JLabel [] heartLabel = horsePanel.getHeartBeatLabel();
 	
